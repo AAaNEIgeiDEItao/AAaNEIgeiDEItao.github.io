@@ -89,14 +89,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近的我有点病态，我怎么了，说话伤人，超级不成熟，要改要改！！！今天分析了一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">不能以自我为中心</span><br><span class="line">气量要大</span><br><span class="line">遇事冷静不激动</span><br><span class="line">信守承诺，不要随便下承诺，但给了一定要做到</span><br><span class="line">谦让,有礼貌。</span><br><span class="line">学会哄人，前提得有女朋友哈哈</span><br><span class="line">学会珍惜眼前人，前提得有眼前人</span><br><span class="line">学会有情调，不要只会敲代码，得多方面发展。</span><br><span class="line">每天有明确的任务目标，每天要总结。</span><br><span class="line">不利用别人，学会保护别人</span><br><span class="line">成熟</span><br></pre></td></tr></table></figure></p>
-<p><span style="color:red">成熟，单单两个字，概括所有方面，心智成熟，心要强大，把过去发生的事当作人生经历，学会做人，再学会做事。好好总结过去。</span></p>
-<p>快毕业了，要坚信以后的人生更精彩。</p>
+<p><span style="color:red">成熟，单单两个字，概括所有方面，心智成熟，心要强大，学会做人，再学会做事。</span></p>
 <p>每个月，都要总结以下自己以上做到了没有。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://aaaneigeideitao.github.io/2018/04/09/2018年不仅要学习，更要学会以下东西/" data-id="cjfrzya8500013sv5i8vhkdx3" class="article-share-link">Share</a>
+      <a data-url="https://aaaneigeideitao.github.io/2018/04/09/2018年不仅要学习，更要学会以下东西/" data-id="cjfs6g1ls0004msv5xiuh0iig" class="article-share-link">Share</a>
       
       
     </footer>
@@ -128,15 +127,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JavaScript不支持类的概念，但它支持与对象一起用的constructor函数。在构造器前面加上new关键字，就可以实例化一个新对象，而且对象成员由该函数定义，这就是构造器模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">	this.age=age;</span><br><span class="line">	this.showInfo=function()&#123;</span><br><span class="line">		console.log(&quot;info:&quot;+this.name+&quot; age is &quot;+this.age);</span><br><span class="line">       //很显然，显示人的信息，这是本该是一个共有的方法。</span><br><span class="line">	&#125;</span><br><span class="line"> &#125;</span><br><span class="line"> //实例化</span><br><span class="line">var person1=new Person(&quot;jwy&quot;,22);//实例化</span><br><span class="line">var person2=new Person(&quot;zhouquan&quot;,21);</span><br><span class="line">person1.showInfo();//info:jwy&apos;s age is 22</span><br><span class="line">person2.showInfo();//info:zhouquan&apos;s age is 21</span><br></pre></td></tr></table></figure></p>
+        <p>JavaScript不支持类的概念，但它支持与对象一起用的constructor函数。在构造器前面加上new关键字，就可以实例化一个新对象，而且对象成员由该函数定义，这就是构造器模式<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person(name,age)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">	this.age=age;</span><br><span class="line">	this.showInfo=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		console.log(<span class="string">"info:"</span>+this.name+<span class="string">" age is "</span>+this.age);</span><br><span class="line">       //很显然，显示人的信息，这是本该是一个共有的方法。</span><br><span class="line">	&#125;</span><br><span class="line"> &#125;</span><br><span class="line"> //实例化</span><br><span class="line">var person1=new Person(<span class="string">"jwy"</span>,22);//实例化</span><br><span class="line">var person2=new Person(<span class="string">"zhouquan"</span>,21);</span><br><span class="line">person1.showInfo();//info:jwy<span class="string">'s age is 22</span></span><br><span class="line"><span class="string">person2.showInfo();//info:zhouquan'</span>s age is 21</span><br></pre></td></tr></table></figure></p>
 <p>既然是共有的方法，那不如我们把构造器和原型方法结合起来，使所有的实例都共有showInfo方法，于是我们可以这么改进：</p>
-   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person(name,age)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">	this.age=age;</span><br><span class="line"> &#125;</span><br><span class="line"> Person.prototype.showInfo=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">"info:"</span>+this.name+<span class="string">" age is "</span>+this.age);</span><br><span class="line"> &#125;</span><br><span class="line">var person1=new Person(<span class="string">"jwy"</span>,22);</span><br><span class="line">var person2=new Person(<span class="string">"zhouquan"</span>,21);</span><br><span class="line">//实例化</span><br><span class="line">person1.showInfo();//info:jwy<span class="string">'s age is 22</span></span><br><span class="line"><span class="string">person2.showInfo();//info:zhouquan'</span>s age is 21</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Person(name,age)&#123;</span><br><span class="line">	this.name=name;</span><br><span class="line">	this.age=age;</span><br><span class="line"> &#125;</span><br><span class="line"> Person.prototype.showInfo=<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    console.log(<span class="string">"info:"</span>+this.name+<span class="string">" age is "</span>+this.age);</span><br><span class="line"> &#125;</span><br><span class="line">var person1=new Person(<span class="string">"jwy"</span>,22);</span><br><span class="line">var person2=new Person(<span class="string">"zhouquan"</span>,21);</span><br><span class="line">//实例化</span><br><span class="line">person1.showInfo();//info:jwy<span class="string">'s age is 22</span></span><br><span class="line"><span class="string">person2.showInfo();//info:zhouquan'</span>s age is 21</span><br></pre></td></tr></table></figure>
 <p> 这样产生同样的作用，但是这样定义showInfo这个本该被所有实例共享的方法，岂不是更好？</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://aaaneigeideitao.github.io/2018/04/09/JavaScript设计模式：构造器模式/" data-id="cjfrzya8b00033sv5kgplg8n9" class="article-share-link">Share</a>
+      <a data-url="https://aaaneigeideitao.github.io/2018/04/09/JavaScript设计模式：构造器模式/" data-id="cjfs6g1ls0005msv5sgzn5gaq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -172,7 +171,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://aaaneigeideitao.github.io/2018/04/07/CSS3-display-flex/" data-id="cjfrzya7z00003sv5zlsgk846" class="article-share-link">Share</a>
+      <a data-url="https://aaaneigeideitao.github.io/2018/04/07/CSS3-display-flex/" data-id="cjfs6g1ls0003msv55riijng4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -209,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://aaaneigeideitao.github.io/2018/04/06/jh/" data-id="cjfrzya8900023sv53nh44d68" class="article-share-link">Share</a>
+      <a data-url="https://aaaneigeideitao.github.io/2018/04/06/jh/" data-id="cjfs6g1lc0001msv5j640eyvl" class="article-share-link">Share</a>
       
       
     </footer>
