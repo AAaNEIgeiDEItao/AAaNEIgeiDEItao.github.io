@@ -5,15 +5,19 @@
   
 
   
-  <title>远</title>
+  <title>JavaScript设计模式：Constructor（构造器）模式 | 远</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="远">
-<meta property="og:url" content="https://aaaneigeideitao.github.io/index.html">
+  <meta name="description" content="JavaScript不支持类的概念，但它支持与对象一起用的constructor函数。在构造器前面加上new关键字，就可以实例化一个新对象，而且对象成员由该函数定义，这就是构造器模式12345678910111213function Person(name,age)&amp;#123;	this.name=name;	this.age=age;	this.showInfo=function()&amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript设计模式：Constructor（构造器）模式">
+<meta property="og:url" content="https://aaaneigeideitao.github.io/2018/04/09/JavaScript设计模式：构造器模式/index.html">
 <meta property="og:site_name" content="远">
+<meta property="og:description" content="JavaScript不支持类的概念，但它支持与对象一起用的constructor函数。在构造器前面加上new关键字，就可以实例化一个新对象，而且对象成员由该函数定义，这就是构造器模式12345678910111213function Person(name,age)&amp;#123;	this.name=name;	this.age=age;	this.showInfo=function()&amp;#123;">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-09T08:43:25.201Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="远">
+<meta name="twitter:title" content="JavaScript设计模式：Constructor（构造器）模式">
+<meta name="twitter:description" content="JavaScript不支持类的概念，但它支持与对象一起用的constructor函数。在构造器前面加上new关键字，就可以实例化一个新对象，而且对象成员由该函数定义，这就是构造器模式12345678910111213function Person(name,age)&amp;#123;	this.name=name;	this.age=age;	this.showInfo=function()&amp;#123;">
   
     <link rel="alternate" href="/atom.xml" title="远" type="application/atom+xml">
   
@@ -64,86 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/09/hello-world/" class="article-date">
-  <time datetime="2018-04-09T08:16:00.000Z" itemprop="datePublished">2018-04-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="坚持写博客，挺好的"><a href="#坚持写博客，挺好的" class="headerlink" title="坚持写博客，挺好的"></a>坚持写博客，挺好的</h3><p><a href="https://aaaneigeideitao.github.info/" target="_blank" rel="noopener">点击回到我的主页</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://aaaneigeideitao.github.io/2018/04/09/hello-world/" data-id="cjfrxdf0y000428v5taxmcj14" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2018年不仅要学习，更要学会以下东西" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/09/2018年不仅要学习，更要学会以下东西/" class="article-date">
-  <time datetime="2018-04-09T08:04:01.000Z" itemprop="datePublished">2018-04-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/2018年不仅要学习，更要学会以下东西/">★★★2018年一定要学会以下东西</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近的我有点病态，我怎么了，说话伤人，超级不成熟，要改要改！！！今天分析了一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">不能以自我为中心</span><br><span class="line">气量要大</span><br><span class="line">遇事冷静不激动</span><br><span class="line">信守承诺，不要随便下承诺，但给了一定要做到</span><br><span class="line">谦让,有礼貌。</span><br><span class="line">学会哄人，前提得有女朋友哈哈</span><br><span class="line">学会珍惜眼前人，前提得有眼前人</span><br><span class="line">学会有情调，不要只会敲代码，得多方面发展。</span><br><span class="line">每天有明确的任务目标，每天要总结。</span><br><span class="line">不利用别人，学会保护别人</span><br><span class="line">成熟</span><br></pre></td></tr></table></figure></p>
-<p><span style="color:red">成熟，单单两个字，概括所有方面，心智成熟，心要强大，把过去发生的事当作人生经历，学会做人，再学会做事。好好总结过去。</span></p>
-<p>快毕业了，要坚信以后的人生更精彩。</p>
-<p>每个月，都要总结以下自己以上做到了没有。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://aaaneigeideitao.github.io/2018/04/09/2018年不仅要学习，更要学会以下东西/" data-id="cjfrzuu4z0000tsv5c5wu9dbs" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-JavaScript设计模式：构造器模式" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-JavaScript设计模式：构造器模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/04/09/JavaScript设计模式：构造器模式/" class="article-date">
   <time datetime="2018-04-09T07:51:22.000Z" itemprop="datePublished">2018-04-09</time>
@@ -156,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/09/JavaScript设计模式：构造器模式/">JavaScript设计模式：Constructor（构造器）模式</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript设计模式：Constructor（构造器）模式
     </h1>
   
 
@@ -179,84 +104,28 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-CSS3-display-flex" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/07/CSS3-display-flex/" class="article-date">
-  <time datetime="2018-04-06T16:15:00.000Z" itemprop="datePublished">2018-04-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2018/04/09/2018年不仅要学习，更要学会以下东西/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/07/CSS3-display-flex/">CSS3~display:flex</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
+          ★★★2018年一定要学会以下东西
         
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://aaaneigeideitao.github.io/2018/04/07/CSS3-display-flex/" data-id="cjfrxdf0l000028v5kk9hce38" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/07/CSS3-display-flex/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">CSS3~display:flex</div>
+    </a>
+  
+</nav>
+
   
 </article>
-
-
-  
-    <article id="post-jh" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/04/06/jh/" class="article-date">
-  <time datetime="2018-04-06T07:03:56.000Z" itemprop="datePublished">2018-04-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/06/jh/">远方....</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><h1>相濡以沫，不如相忘于江湖</h1><br><img src="\ images\pasted-7.png" alt="upload successful"><p></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://aaaneigeideitao.github.io/2018/04/06/jh/" data-id="cjfrxdf0t000228v56scpgpjs" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
