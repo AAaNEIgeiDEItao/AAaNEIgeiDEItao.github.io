@@ -1,208 +1,166 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="theme-color" content="#1b7aca">
+  <link rel="icon" href="/icon.jpg">
+  <meta name="application-name" content="Small Fat Fat"/>
+  <meta name="msapplication-TileColor" content="#1b7aca"/>
+  <meta name="msapplication-square70x70logo" content="/icon.jpg" />
+  <meta name="msapplication-square150x150logo" content="/icon.jpg" />
+  <meta name="msapplication-wide310x150logo" content="/icon.jpg" />
+  <meta name="msapplication-square310x310logo" content="/icon.jpg" />
+  <meta name="msapplication-notification" content="frequency=30; polling-uri=/atom.xml" />
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="/icon.jpg">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-startup-image" href="/icon.jpg">
+
   
   <title>Linux 磁盘管理命令 | Small Fat Fat</title>
-
-  <!-- keywords -->
+  <meta name="author" content="weiyuan">
   
-
+  <meta name="description" content="fdisk命令格式：fdisk [options] [device]功能：磁盘分区12345-l //&#34;显示磁盘分区信息&#34;//例$ sudo fdisk -l //&#34;显示所有磁盘分区信息&#34;$ sudo fdisk -l /dev/sdb //&#34;显示磁盘sdb分区信息&#34;$ sudo fdisk /de">
+  
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="fdisk命令格式：fdisk [options] [device]功能：磁盘分区12345-l //&quot;显示磁盘分区信息&quot;//例$ sudo fdisk -l //&quot;显示所有磁盘分区信息&quot;$ sudo fdisk -l /dev/sdb //&quot;显示磁盘sdb分区信息&quot;$ sudo fdisk /dev/sdb //&quot;对sdb分区&quot; mkfs 命令格式：mkfs [-t fstype] partit">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Linux 磁盘管理命令">
-<meta property="og:url" content="https://aaaneigeideitao.github.io/2018/04/10/Linux-磁盘管理命令/index.html">
-<meta property="og:site_name" content="Small Fat Fat">
-<meta property="og:description" content="fdisk命令格式：fdisk [options] [device]功能：磁盘分区12345-l //&quot;显示磁盘分区信息&quot;//例$ sudo fdisk -l //&quot;显示所有磁盘分区信息&quot;$ sudo fdisk -l /dev/sdb //&quot;显示磁盘sdb分区信息&quot;$ sudo fdisk /dev/sdb //&quot;对sdb分区&quot; mkfs 命令格式：mkfs [-t fstype] partit">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-10T08:31:29.718Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux 磁盘管理命令">
-<meta name="twitter:description" content="fdisk命令格式：fdisk [options] [device]功能：磁盘分区12345-l //&quot;显示磁盘分区信息&quot;//例$ sudo fdisk -l //&quot;显示所有磁盘分区信息&quot;$ sudo fdisk -l /dev/sdb //&quot;显示磁盘sdb分区信息&quot;$ sudo fdisk /dev/sdb //&quot;对sdb分区&quot; mkfs 命令格式：mkfs [-t fstype] partit">
-  
-    <link rel="alternative" href="/atom.xml" title="Small Fat Fat" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-  
 
-  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
-  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <meta property="og:title" content="Linux 磁盘管理命令"/>
+  <meta property="og:site_name" content="Small Fat Fat"/>
 
   
+    <meta property="og:image" content=""/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Small Fat Fat" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+    <link href="/css/animate.css" rel="stylesheet">
+  
+  
+    <script src="/js/jquery-2.0.3.min.js"></script>
+  
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script>
+    if (window.location.href.indexOf("aaaneigeideitao.github.io")<0) {
+      location.href = location.href.replace(location.host, "aaaneigeideitao.github.io");
+    }
+  </script>
+
 </head>
+
+
 <body>
-  <div id="container">
-    <div id="particles-js"></div>
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
-			
-		</a>
-
-		<hgroup>
-		  <h1 class="header-author"><a href="/">weiyuan</a></h1>
-		</hgroup>
-
-		
-		<p class="header-subtitle">心静则不热、不乱、不燥.</p>
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						<li>友情链接</li>
-						
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
-			        
-			        </div>
-				</section>
-				
-
-				
-			</div>
-		</div>
-	</header>				
+<!--[if lt IE9]>
+<script>
+alert("Please Update Your IE \n请升级您的IE浏览器");
+</script>
+< ![endif]-->
+  <header id="header" class="header header--fixed hide-from-print animated slideInDown"><div class="alignleft backtohome">
+  <a href="/">
+    <img id="icon-photo-small" class="personal-photo  animated rotateIn" src="/icon.jpg" alt="weiyuan">
+  </a>
+  <h1 id="title-mini" class=""><a href="/">Small Fat Fat</a></h1>
 </div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">weiyuan</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">weiyuan</h1>
-			</hgroup>
-			
-			<p class="header-subtitle">心静则不热、不乱、不燥.</p>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-				</div>
-			</nav>
-		</header>				
-	</div>
+<a target="_blank" id="mini-toggle" class="more icon alignright"></a>
+<nav id="main-nav" class="alignright animated slideInRight">
+
+    
+    
+      <a target="_blank" class="icon twitter" href="http://twitter.com/1ittlecup"></a>
+    
+    
+    
+      <a target="_blank" class="icon googleplus" href="http://plus.google.com/+RuoxinHe"></a> 
+    
+    
+      <a target="_blank" class="icon github" href="http://github.com/https://github.com/AAaNEIgeiDEItao/AAaNEIgeiDEItao.github.io"></a>
+    
+    
+    
+    
+    
+      <a target="_blank" class="icon zhihu" href="http://zhihu.com/people/1ittlecup"></a>
+    
+    
+    
+  <div class="clearfix"></div>
 </nav>
-      <div class="body-wrap"><article id="post-Linux-磁盘管理命令" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/10/Linux-磁盘管理命令/" class="article-date">
-  	<time datetime="2018-04-10T07:53:55.000Z" itemprop="datePublished">2018-04-10</time>
-</a>
+
+</header>
+  <aside id="sidebar" class="alignleft animated slideInLeft"><div class="personal-info">
+  <figure>
+    
+    <div  class="backtohome">
+      <a href="/">
+        <img id="icon-photo-normal" class="personal-photo animated rotateIn" src="/icon.jpg" alt="weiyuan">
+      </a>
     </div>
+    
+    <figcaption>
+      <h3 class=>weiyuan</h3>
+      <p>心静则不热、不乱、不燥.</p>
+    </figcaption>
+  </figure>
+  <section class="social">
+    
+    
+      <a target="_blank" class="icon twitter depth" href="http://twitter.com/1ittlecup"></a>
+    
+    
+    
+      <a target="_blank" class="icon googleplus depth" href="http://plus.google.com/+RuoxinHe"></a> 
+    
+    
+      <a target="_blank" class="icon github depth" href="http://github.com/https://github.com/AAaNEIgeiDEItao/AAaNEIgeiDEItao.github.io"></a>
+    
+    
+    
+    
+    
+      <a target="_blank" class="icon zhihu depth" href="http://zhihu.com/people/1ittlecup"></a>
+    
+    
+    
+  </section>
+</div>
+<div class="theme-info">
+  <a target="_blank" href="https://github.com/heruoxin/hexo-persona-color" class="html5"> Persona Color Theme</a> 
+  &copy; - 2018 weiyuan
   
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
+</div>
+</aside>
+  <div id="content" class="inner">
+    <p id="header-fix"></p>
+    <div id="main-col" class="alignright"><div id="wrapper"><article class="post">
   
-    <h1 class="article-title" itemprop="name">
-      Linux 磁盘管理命令
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
       
-    </h1>
+        <div class="icon depth"></div>
+        <time class="depth" datetime="2018-04-10T07:53:55.000Z"><a href="#">2018-04-10</a></time>
+      
+      
+  
+    <h1 class="depth title">Linux 磁盘管理命令</h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-        
-
-        
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
+    </header>
+    <div class="entry depth">
       
         <h1 id="fdisk命令"><a href="#fdisk命令" class="headerlink" title="fdisk命令"></a>fdisk命令</h1><h2 id="格式：fdisk-options-device"><a href="#格式：fdisk-options-device" class="headerlink" title="格式：fdisk [options] [device]"></a>格式：fdisk [options] [device]</h2><h3 id="功能：磁盘分区"><a href="#功能：磁盘分区" class="headerlink" title="功能：磁盘分区"></a>功能：磁盘分区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-l //<span class="string">"显示磁盘分区信息"</span></span><br><span class="line">//例</span><br><span class="line">$ sudo fdisk -l //<span class="string">"显示所有磁盘分区信息"</span></span><br><span class="line">$ sudo fdisk -l /dev/sdb //<span class="string">"显示磁盘sdb分区信息"</span></span><br><span class="line">$ sudo fdisk /dev/sdb //<span class="string">"对sdb分区"</span></span><br></pre></td></tr></table></figure>
 <h1 id="mkfs-命令"><a href="#mkfs-命令" class="headerlink" title="mkfs 命令"></a>mkfs 命令</h1><h2 id="格式：mkfs-t-fstype-partition"><a href="#格式：mkfs-t-fstype-partition" class="headerlink" title="格式：mkfs [-t fstype] partition"></a>格式：mkfs [-t fstype] partition</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//例</span><br><span class="line">$ sudo mkfs -t ext4 /dev/sdb1 </span><br><span class="line">//<span class="string">"格式化分区sdb1"</span></span><br></pre></td></tr></table></figure>
@@ -222,107 +180,113 @@
 
       
     </div>
-    
+    <footer>
+      
+        
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2018/04/14/ES6-module/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          ES6:module
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/04/10/Linux-4-10/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux 文件操作</div>
-      <strong class="article-nav-caption">&gt;</strong>
-    </a>
-  
-</nav>
-
-  
 </article>
 
 
-<div class="ds-share share" data-thread-key="Linux-磁盘管理命令" data-title="Linux 磁盘管理命令" data-url="https://aaaneigeideitao.github.io/2018/04/10/Linux-磁盘管理命令/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="Linux 磁盘管理命令">
-    <div class="ds-share-inline">
-      <ul  class="ds-share-icons-16">
-      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-      </ul>
-      <div class="ds-share-icons-more">
-      </div>
-    </div>
- </div>
- 
 
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-      <div class="footer-left">
-        &copy; 2018 weiyuan
-      </div>
-        <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
-        </div>
-    </div>
+</div></div>
+    <div class="clearfix"></div>
   </div>
-</footer>
-    </div>
-    
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
+  <footer id="footer" class="inner"></footer>
+  <script src="/js/headroom.min.and.gallery.js"></script>
+<script>
+$("#mini-toggle").click(function () {
+    $( "#main-nav" ).css("display","inline");
+    setTimeout(function(){
+        $( "#main-nav" ).removeClass("slideInRight").addClass("slideOutRight");
+    }, 3000);
+    setTimeout(function(){
+        $( "#main-nav" ).css("display","");
+        $( "#main-nav" ).removeClass("slideOutRight").addClass("slideInRight");
+    }, 3555);
+});
+</script>
 
 <script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="/js/main.js"></script>
-
-
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
+$("#header").headroom({
+  "tolerance": 0,
+  "offset": 200,
+  "classes": {
+    "initial": "",
+    "pinned": "slideInDown",
+    "unpinned": "slideOutUp"
+  }
 });
+$("#header").headroom("destroy");
+console.log("这网站没彩蛋，不用找了……")
+</script>
 
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
+<script>
+$("a").click(function () {
+    $( "#icon-photo-small"  ).removeClass( "rotateIn" ).addClass( "rotateOut" );
+    $( "#icon-photo-normal" ).removeClass( "rotateIn" ).addClass( "rotateOut" );
+    setTimeout(function(){
+        $( "#icon-photo-small"  ).removeClass( "rotateOut" ).addClass( "rotateIn" );
+        $( "#icon-photo-normal" ).removeClass( "rotateOut" ).addClass( "rotateIn" );
+    }, 900);
 });
 </script>
 
-<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-46393541-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 
 
-  </div>
+<!--[if lt IE 9]><script src="/js/excanvas.js"></script><![endif]-->
+<script src="/js/jquery.tagcanvas.min.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function() {
+   if( ! $('#myCanvas').tagcanvas({
+     textColour : '#6d6d6d',
+     outlineThickness : 1,
+     textHeight: 20,
+     maxSpeed : 0.04,
+     depth : 0.75
+   })) {
+     // TagCanvas failed to load
+     $('#myCanvasContainer').hide();
+   }
+   // your other jQuery stuff here...
+ });
+ </script>
+
+
+<script src="/js/pangu.js"></script>
+<script>pangu.page_spacing();</script>
+
+
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
 </body>
 </html>
