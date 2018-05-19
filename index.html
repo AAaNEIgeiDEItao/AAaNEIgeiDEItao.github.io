@@ -239,6 +239,127 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/05/19/JavaScript实现观察者模式：巨星与粉丝/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Small Fat Fat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/19/JavaScript实现观察者模式：巨星与粉丝/" itemprop="url">JavaScript实现观察者模式：巨星与粉丝</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T20:38:08+08:00">
+                2018-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近学习Vue和实现事件一对多观察的时候，提到了观察者模式，经过看书加上自己的理解，写了个这么一个例子。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">class FansList &#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span></span>() &#123;</span><br><span class="line">		this.fansList = [];//设置粉丝群</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Add(obj) &#123;</span><br><span class="line">		<span class="built_in">return</span> this.fansList.push(obj);//粉丝群直接添加粉丝按顺序</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="title">Empty</span></span>() &#123;</span><br><span class="line">		this.fansList = [];//清空粉丝群</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="title">Count</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> this.fansList.length;//统计粉丝群人数</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Get(index) &#123;</span><br><span class="line">		<span class="keyword">if</span>(index &gt; -1 &amp;&amp; index &lt; this.fansList.length) &#123;</span><br><span class="line">			<span class="built_in">return</span> this.fansList[index];//寻找指定粉丝号的粉丝</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Insert(obj, index) &#123;//粉丝群人员变动，改变号码，添加粉丝</span><br><span class="line">		var pointer = -1;</span><br><span class="line">		<span class="keyword">if</span>(index === 0) &#123;</span><br><span class="line">			this.fansList.unshift(obj);</span><br><span class="line">			pointer = index;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(index === this.fansList.length) &#123;</span><br><span class="line">			this.fansList.push(obj);</span><br><span class="line">			pointer = index;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> pointer;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	IndexOf(obj, startIndex) &#123;//寻找指定粉丝，返回她的粉丝号</span><br><span class="line">		const i = startIndex,</span><br><span class="line">		pointer = -1;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span>(i &lt; this.fansList.length) &#123;</span><br><span class="line">			<span class="keyword">if</span>(this.fansList[i] === obj) &#123;</span><br><span class="line">				pointer = i;</span><br><span class="line">			&#125;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> pointer;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	RemoveIndexAt(index) &#123;//踢出粉丝群</span><br><span class="line">		<span class="keyword">if</span>(index === 0) &#123;</span><br><span class="line">			this.fansList.shift();</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(index === this.fansList.length - 1) &#123;</span><br><span class="line">			this.fansList.pop();</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			this.fansList.splice(index, 1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Star &#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span></span>() &#123;</span><br><span class="line">		this.fanBase = new FansList();//初始化被观察者的粉丝们</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	AddFans(fans) &#123;</span><br><span class="line">		this.fanBase.Add(fans);//增加一个粉丝</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	RemoveFans(fans) &#123;</span><br><span class="line">		this.fanBase.RemoveIndexAt(this.fansBase.IndexOf(fans, 0));//移除一个粉丝</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Notify(context) &#123;//将信息按粉丝号通知给各位粉丝</span><br><span class="line">		const fansCount = this.fanBase.Count();</span><br><span class="line">		<span class="keyword">for</span>(var i = 0; i &lt; fansCount; i++) &#123;</span><br><span class="line">			this.fanBase.Get(i).Update(context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> baseNum=100;//设置基础号码</span><br><span class="line">class Fans&#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span></span>()&#123;</span><br><span class="line">		this.No=baseNum++;</span><br><span class="line"></span><br><span class="line">		this.Update=<span class="keyword">function</span>(content)&#123;	</span><br><span class="line">			console.log(<span class="string">"No."</span>+this.No+<span class="string">'\t'</span>+content);</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*new个巨星:克里斯蒂亚诺.罗纳尔多*/</span><br><span class="line">const CR7=new Star();</span><br><span class="line">/*new个巨星已经new了个粉丝群*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*new 几个粉丝*/</span><br><span class="line">const jwy=new Fans();</span><br><span class="line">const liuqian=new Fans();</span><br><span class="line">const zhouquan=new Fans();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*添加粉丝*/</span><br><span class="line">CR7.AddFans(jwy);</span><br><span class="line">CR7.AddFans(liuqian);</span><br><span class="line">CR7.AddFans(zhouquan);</span><br><span class="line"></span><br><span class="line">/*让你们来看欧冠决赛*/</span><br><span class="line">CR7.Notify(<span class="string">"5月26日 去看欧冠决赛"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：<br><img src="\ images\pasted-0.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/05/08/LINUX-5-8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1377,128 +1498,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/04/09/2018年不仅要学习，更要学会以下东西/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="weiyuan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Small Fat Fat">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/09/2018年不仅要学习，更要学会以下东西/" itemprop="url">★★★2018年一定要学会以下东西</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-09T16:04:01+08:00">
-                2018-04-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近的我有点病态，我怎么了，说话伤人，超级不成熟，要改要改！！！今天分析了一下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">不能以自我为中心</span><br><span class="line">气量要大</span><br><span class="line">遇事冷静不激动</span><br><span class="line">信守承诺，不要随便下承诺，但给了一定要做到</span><br><span class="line">谦让,有礼貌。</span><br><span class="line">学会哄人，前提得有女朋友哈哈</span><br><span class="line">学会珍惜眼前人，前提得有眼前人</span><br><span class="line">学会有情调，不要只会敲代码，得多方面发展。</span><br><span class="line">每天有明确的任务目标，每天要总结。</span><br><span class="line">不利用别人，学会保护别人</span><br><span class="line">成熟</span><br></pre></td></tr></table></figure></p>
-<p><span style="color:red">成熟，单单两个字，概括所有方面，心智成熟，心要强大，学会做人，再学会做事。</span></p>
-<p>每个月，都要总结以下自己以上做到了没有。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1549,7 +1548,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
