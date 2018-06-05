@@ -239,6 +239,275 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/06/05/关于Object-defineProperty-的一些要点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Small Fat Fat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/关于Object-defineProperty-的一些要点/" itemprop="url">关于Object.defineProperty()的一些要点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:44:55+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="使用对象字面量定义对象"><a href="#使用对象字面量定义对象" class="headerlink" title="使用对象字面量定义对象"></a>使用对象字面量定义对象</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person1=&#123;</span><br><span class="line">	name:<span class="string">"Zhouquan"</span>,</span><br><span class="line">	age:23,</span><br><span class="line">	job:<span class="string">"student"</span>,</span><br><span class="line">	sayName:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		console.log(<span class="string">"name:"</span>+this.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><h2 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h2><p>这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的引擎用的，放在两对儿方括号中</p>
+<h3 id="Configurable"><a href="#Configurable" class="headerlink" title="[[Configurable]]:"></a>[[Configurable]]:</h3><p>表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性或者把属性修改成访问器属性。新定义的对象默认值是<code>true</code></p>
+<h3 id="Enumerable"><a href="#Enumerable" class="headerlink" title="[[Enumerable]]:"></a>[[Enumerable]]:</h3><p>表示能否通过for-in循环返回属性，新定义的对象默认值为<code>true</code></p>
+<h3 id="Writable"><a href="#Writable" class="headerlink" title="[[Writable]]:"></a>[[Writable]]:</h3><p>表示能否修改属性的值，新定义对象默认值为<code>true</code></p>
+<h3 id="Value"><a href="#Value" class="headerlink" title="[[Value]]:"></a>[[Value]]:</h3><p>包含这个属性的数据值，写入/读取数据值的时候，都从这个位置写入/读取</p>
+<h2 id="内部属性用法"><a href="#内部属性用法" class="headerlink" title="内部属性用法"></a>内部属性用法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var person2=&#123;</span><br><span class="line">	name:<span class="string">"Quanshushu"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>[[Value]]</code>特性被设置为<code>&quot;Quanshushu&quot;</code>，这个值若修改都会被反应在这个位置</p>
+<h3 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a>Object.defineProperty()</h3><p>用来修改属性的默认特以及访问器属性</p>
+<ul>
+<li>支持此方法的浏览器：IE9+,FF4+,SF5+,O12+,Chrome</li>
+</ul>
+<p>用法:<code>Object.defineProperty(&#39;属性所在的对象&#39;，&#39;属性的名字&#39;，&#39;描述符对象&#39;)</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(person2,&quot;name&quot;,&#123;</span><br><span class="line">	writable:false,</span><br><span class="line">	enumerable:false	</span><br><span class="line">&#125;);	</span><br><span class="line">try&#123;</span><br><span class="line">	person2.name=&quot;Zhoudeng&quot;;</span><br><span class="line">/*因为[[Writable]]特性值被修改成false，所以name属性没有被修改*/</span><br><span class="line">/*严格模式下，以上操作会报错*/</span><br><span class="line">&#125;catch(e)&#123;</span><br><span class="line">	// console.log(e.message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="关于-Configurable-特性有以下注意"><a href="#关于-Configurable-特性有以下注意" class="headerlink" title="关于[[Configurable]]特性有以下注意"></a>关于[[Configurable]]特性有以下注意</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">try&#123;	</span><br><span class="line">	Object.defineProperty(person1,<span class="string">"name"</span>,&#123;configurable:<span class="literal">false</span>&#125;);</span><br><span class="line">	delete person1.name;//result:<span class="string">"Cannot delete..."</span></span><br><span class="line">&#125;catch(e)&#123;</span><br><span class="line">	// console.log(e.message);</span><br><span class="line">&#125;</span><br><span class="line">try&#123;</span><br><span class="line"> /*一旦把属性定义为不可配置的就不能重新定义为可配置的了*/</span><br><span class="line">    Object.defineProperty(person1,<span class="string">"name"</span>,&#123;configurable:<span class="literal">false</span>&#125;);</span><br><span class="line">	Object.defineProperty(person1,<span class="string">"name"</span>,&#123;configurable:<span class="literal">true</span>&#125;);//error</span><br><span class="line">    </span><br><span class="line"> /*[[Configurable]]特性被设置为<span class="literal">false</span>之后，只有[[writable]]特性可以更改*/   </span><br><span class="line">	Object.defineProperty(person1,<span class="string">"name"</span>,&#123;writable:<span class="literal">true</span>&#125;);</span><br><span class="line">    person1.name=<span class="string">"xiaowang"</span>;</span><br><span class="line">	// console.log(person1.name);//result:<span class="string">"xiaowang"</span></span><br><span class="line">&#125;catch(e)&#123;</span><br><span class="line">	console.log(e.message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="访问器属性"><a href="#访问器属性" class="headerlink" title="访问器属性"></a>访问器属性</h2><p>不包含数据值，包含一对儿getter和setter函数（但都不是必须的）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var salary=&#123;</span><br><span class="line">	_data:2350,//前面的下划线是一种记号，用于表示只能通过对象方法访问的属性</span><br><span class="line">	grade:<span class="string">"普通员工"</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(salary,&quot;data&quot;,&#123;</span><br><span class="line">	get:function()&#123;</span><br><span class="line">		return this.data;</span><br><span class="line">	&#125;</span><br><span class="line">	,</span><br><span class="line">	set:function(newValue)&#123;</span><br><span class="line">		if(newValue&gt;=2350&amp;&amp;newValue&lt;8950)&#123;</span><br><span class="line">			this._data=newValue;</span><br><span class="line">			this.grade=&quot;初级工程师&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else if(newValue&gt;=8950&amp;&amp;newValue&lt;18950)&#123;</span><br><span class="line">			this._data=newValue;</span><br><span class="line">			this.grade=&quot;中级工程师&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else if(newValue&gt;=18950&amp;&amp;newValue&lt;28950)&#123;</span><br><span class="line">			this._data=newValue;</span><br><span class="line">			this.grade=&quot;高级工程师&quot;;</span><br><span class="line">		&#125;</span><br><span class="line">		else&#123;</span><br><span class="line">			this._data=newValue;</span><br><span class="line">			this.grade=&quot;其他职位&quot;;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">try&#123;</span><br><span class="line">	salary.data=15400;</span><br><span class="line">	console.log(JSON.stringify(salary));</span><br><span class="line">&#125;catch(e)&#123;</span><br><span class="line">   console.log(e.message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用访问器属性的常见方式，即设置一个属性的值会导致其他属性发生变化</li>
+<li>只设置setter函数或者只设置getter函数在strict模式下会导致错误</li>
+<li>旧浏览器访问方法:<code>__defineGetter__</code>和<code>__defineSetter__</code></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 请注意，该方法是非标准的，不要尝试用它</span><br><span class="line">var book=&#123;</span><br><span class="line">	_year:2004,</span><br><span class="line">	edition:1</span><br><span class="line">&#125;</span><br><span class="line">book.__defineGetter__(<span class="string">"year"</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this._year;</span><br><span class="line">&#125;);</span><br><span class="line">book.__defineSetter__(<span class="string">"year"</span>,<span class="keyword">function</span>(newValue)&#123;</span><br><span class="line">	<span class="keyword">if</span>(newValue&gt;2004)&#123;</span><br><span class="line">		this._year=newValue;</span><br><span class="line">		this.edition+=newValue-2004;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">book.year=2005;</span><br><span class="line">console.log(book.edition);//1</span><br></pre></td></tr></table></figure>
+<h2 id="Object-defineProperties-方法"><a href="#Object-defineProperties-方法" class="headerlink" title="Object.defineProperties()方法"></a>Object.defineProperties()方法</h2><p>用来定义多个属性。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var dog=&#123;&#125;;</span><br><span class="line">Object.defineProperties(dog,&#123;</span><br><span class="line">	age:&#123;</span><br><span class="line">		value:6</span><br><span class="line">	&#125;,</span><br><span class="line">	_length:&#123;</span><br><span class="line">		value:1</span><br><span class="line">	&#125;,</span><br><span class="line">	kind:&#123;</span><br><span class="line">		value:<span class="string">"husky"</span>,</span><br><span class="line">		// enumerable:<span class="literal">false</span></span><br><span class="line">	&#125;,</span><br><span class="line">	length:&#123;</span><br><span class="line">		get:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			<span class="built_in">return</span> this._length+<span class="string">'m'</span>;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="built_in">set</span>:<span class="keyword">function</span>(value)&#123;</span><br><span class="line">			this._length=value;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">``` </span><br><span class="line">//初始化cat对象并且定义age属性</span><br><span class="line">``` bash</span><br><span class="line">var cat=&#123;</span><br><span class="line">	age:23</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>//给cat对象定义name属性<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Object.defineProperty(cat,<span class="string">"name"</span>,&#123;</span><br><span class="line">	value:<span class="string">"Jerry"</span>					</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">let</span> dogDes=Object.getOwnPropertyDescriptor(dog,<span class="string">'kind'</span>);</span><br><span class="line"><span class="built_in">let</span> catNameDes=Object.getOwnPropertyDescriptor(cat,<span class="string">'name'</span>);</span><br><span class="line"><span class="built_in">let</span> catAgeDes=Object.getOwnPropertyDescriptor(cat,<span class="string">'age'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">console.log(dogDes.enumerable);//<span class="literal">false</span></span><br><span class="line">console.log(catDes.enumerable);//<span class="literal">false</span>,name在对象字面量中未定义，而是使用了defineProperty()方法，而且未指定其enumerable属性</span><br><span class="line">console.log(cat1Des.enumerable);//<span class="literal">true</span>,age在对象字面量中就提前声明了</span><br></pre></td></tr></table></figure></p>
+<h5 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h5><p>/* </p>
+<ul>
+<li>注意了，直接用对象字面量声明过的属性，其enumerable默认值是true没错，</li>
+<li>但是如果没有在提前定义属性而是使用defineProperty()或defineProperties()定义的属性，</li>
+<li>如果未指定enumerable那么其默认值是false，无法被遍历<br>*/</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/06/05/Firefox中事件取消默认行为的一个注意点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Small Fat Fat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/Firefox中事件取消默认行为的一个注意点/" itemprop="url">Firefox中事件取消默认行为的一个注意点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:38:02+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天在写表单的取消默认行为时，在使用<code>event.preventDefault()</code>给表单的提交按钮取消默认行为时，没有显示的在函数里定义<code>event</code>参数，在Chrome下可以实现目的，但是在火狐下控制台输出错误<code>event is not defined</code>，给函数加上显示加上<code>event</code>参数后，测试通过。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/05/19/JavaScript实现观察者模式：巨星与粉丝/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1242,262 +1511,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/04/10/Linux-磁盘管理命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="weiyuan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Small Fat Fat">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/10/Linux-磁盘管理命令/" itemprop="url">Linux 磁盘管理命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-10T15:53:55+08:00">
-                2018-04-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="fdisk命令"><a href="#fdisk命令" class="headerlink" title="fdisk命令"></a>fdisk命令</h1><h2 id="格式：fdisk-options-device"><a href="#格式：fdisk-options-device" class="headerlink" title="格式：fdisk [options] [device]"></a>格式：fdisk [options] [device]</h2><h3 id="功能：磁盘分区"><a href="#功能：磁盘分区" class="headerlink" title="功能：磁盘分区"></a>功能：磁盘分区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-l //<span class="string">"显示磁盘分区信息"</span></span><br><span class="line">//例</span><br><span class="line">$ sudo fdisk -l //<span class="string">"显示所有磁盘分区信息"</span></span><br><span class="line">$ sudo fdisk -l /dev/sdb //<span class="string">"显示磁盘sdb分区信息"</span></span><br><span class="line">$ sudo fdisk /dev/sdb //<span class="string">"对sdb分区"</span></span><br></pre></td></tr></table></figure>
-<h1 id="mkfs-命令"><a href="#mkfs-命令" class="headerlink" title="mkfs 命令"></a>mkfs 命令</h1><h2 id="格式：mkfs-t-fstype-partition"><a href="#格式：mkfs-t-fstype-partition" class="headerlink" title="格式：mkfs [-t fstype] partition"></a>格式：mkfs [-t fstype] partition</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//例</span><br><span class="line">$ sudo mkfs -t ext4 /dev/sdb1 </span><br><span class="line">//<span class="string">"格式化分区sdb1"</span></span><br></pre></td></tr></table></figure>
-<h1 id="e2label-命令"><a href="#e2label-命令" class="headerlink" title="e2label 命令"></a>e2label 命令</h1><h2 id="格式：e2label-partition-label"><a href="#格式：e2label-partition-label" class="headerlink" title="格式：e2label partition [label]"></a>格式：e2label partition [label]</h2><h3 id="功能：显示或指定分区卷标"><a href="#功能：显示或指定分区卷标" class="headerlink" title="功能：显示或指定分区卷标"></a>功能：显示或指定分区卷标</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo e2label /dev/sdb1 //<span class="string">"显示sdb1卷标"</span></span><br><span class="line">$ sudo e2label /dev/sdb1 lzdfile //<span class="string">"指定卷标为sdb1"</span></span><br></pre></td></tr></table></figure>
-<h1 id="mount-命令"><a href="#mount-命令" class="headerlink" title="mount 命令"></a>mount 命令</h1><h2 id="格式：mount-t-fstype-o-options-device-dir"><a href="#格式：mount-t-fstype-o-options-device-dir" class="headerlink" title="格式：mount [-t fstype] [-o options] device dir"></a>格式：mount [-t fstype] [-o options] device dir</h2><h3 id="功能：把系统分区device挂载在目录dir下"><a href="#功能：把系统分区device挂载在目录dir下" class="headerlink" title="功能：把系统分区device挂载在目录dir下"></a>功能：把系统分区device挂载在目录dir下</h3><h4 id="fstype-常省略，除ext外，常用："><a href="#fstype-常省略，除ext外，常用：" class="headerlink" title="[fstype]常省略，除ext外，常用："></a>[fstype]常省略，除ext外，常用：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iso9660  <span class="string">"光盘映象"</span></span><br><span class="line">msdos/vfat/ntfs	<span class="string">"Windows FAT16/32/NTFS系统"</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ro <span class="string">"只读方式挂载"</span></span><br><span class="line">rw <span class="string">"读写方式挂载"</span></span><br><span class="line">-o <span class="string">"把文件虚拟成硬盘方式挂载"</span></span><br><span class="line">//例</span><br><span class="line">$ mount  <span class="string">"列出已挂载系统"</span></span><br><span class="line">$ sudo mount -t vfat /dev/sdc1 /mnt/udisk  <span class="string">"U盘"</span></span><br></pre></td></tr></table></figure>
-<h1 id="umount"><a href="#umount" class="headerlink" title="umount"></a>umount</h1><h2 id="格式：umount-options-mountpoint-device"><a href="#格式：umount-options-mountpoint-device" class="headerlink" title="格式：umount [options] mountpoint|device"></a>格式：umount [options] mountpoint|device</h2><h3 id="功能：卸载文件系统分区"><a href="#功能：卸载文件系统分区" class="headerlink" title="功能：卸载文件系统分区"></a>功能：卸载文件系统分区</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-h <span class="string">"帮助信息"</span></span><br><span class="line">-t fstype <span class="string">"卸除指定类型文件系统"</span></span><br><span class="line">//例</span><br><span class="line">$ umount /mnt/udisk <span class="string">"卸载方式1"</span></span><br><span class="line">$ umount /dev/sdc1 <span class="string">"卸载方式2"</span></span><br></pre></td></tr></table></figure>
-<h1 id="df"><a href="#df" class="headerlink" title="df"></a>df</h1><h2 id="格式-df-options-device"><a href="#格式-df-options-device" class="headerlink" title="格式 df [options] [device]"></a>格式 df [options] [device]</h2><h3 id="功能-察看磁盘文件系统分区信息"><a href="#功能-察看磁盘文件系统分区信息" class="headerlink" title="功能 察看磁盘文件系统分区信息"></a>功能 察看磁盘文件系统分区信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-a <span class="string">"列出全部文件系统"</span> </span><br><span class="line">-h <span class="string">"可读格式显示"</span></span><br><span class="line">-t fstype <span class="string">"列出指定类型文件系统"</span></span><br><span class="line">-T <span class="string">"列出文件系统类型名称"</span></span><br><span class="line">//例</span><br><span class="line">$ df -aht</span><br></pre></td></tr></table></figure>
-<h1 id="du"><a href="#du" class="headerlink" title="du"></a>du</h1><h2 id="du-options-文件目录"><a href="#du-options-文件目录" class="headerlink" title="du [options] [文件目录]"></a>du [options] [文件目录]</h2><h3 id="显示文件和目录占用空间"><a href="#显示文件和目录占用空间" class="headerlink" title="显示文件和目录占用空间"></a>显示文件和目录占用空间</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-a <span class="string">"递归显示文件和子目录"</span></span><br><span class="line">-c <span class="string">"汇总大小信息"</span></span><br><span class="line">-h <span class="string">"可读格式显示"</span></span><br><span class="line">-s <span class="string">"仅显示各项之和(包括子目录)"</span></span><br><span class="line">-S <span class="string">"仅显示各项之和(不包括子目录)"</span></span><br></pre></td></tr></table></figure>
-<h1 id="free"><a href="#free" class="headerlink" title="free"></a>free</h1><h2 id="free-options"><a href="#free-options" class="headerlink" title="free [options]"></a>free [options]</h2><h3 id="查看内存和swap信息"><a href="#查看内存和swap信息" class="headerlink" title="查看内存和swap信息"></a>查看内存和swap信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-h <span class="string">"可读格式显示"</span></span><br><span class="line">-t <span class="string">"显示综合（RAM+swap）"</span></span><br><span class="line">//例</span><br><span class="line">$ free -t</span><br></pre></td></tr></table></figure>
-<h1 id="uname"><a href="#uname" class="headerlink" title="uname"></a>uname</h1><h2 id="uname-options"><a href="#uname-options" class="headerlink" title="uname [options]"></a>uname [options]</h2><h3 id="显示操作系统信息"><a href="#显示操作系统信息" class="headerlink" title="显示操作系统信息"></a>显示操作系统信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-r <span class="string">"输出内核发行号"</span></span><br><span class="line">-s <span class="string">"内核名称"</span></span><br><span class="line">-v <span class="string">"内核版本"</span></span><br><span class="line">-o <span class="string">"操作系统名称"</span></span><br><span class="line">//例</span><br><span class="line">$ uname -r</span><br></pre></td></tr></table></figure>
-<h1 id="cal"><a href="#cal" class="headerlink" title="cal"></a>cal</h1><h2 id="cal-options-month-year"><a href="#cal-options-month-year" class="headerlink" title="cal [options [month [year]]]"></a>cal [options [month [year]]]</h2><h3 id="显示日历"><a href="#显示日历" class="headerlink" title="显示日历"></a>显示日历</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-y <span class="string">"显示今年年历"</span></span><br><span class="line">//例</span><br><span class="line">$ cal <span class="string">"当月月历"</span></span><br><span class="line">$ cal 1977</span><br><span class="line">$ cal 3 1977</span><br></pre></td></tr></table></figure>
-<h1 id="date"><a href="#date" class="headerlink" title="date"></a>date</h1><h2 id="显示活设定系统的日期与事件"><a href="#显示活设定系统的日期与事件" class="headerlink" title="显示活设定系统的日期与事件"></a>显示活设定系统的日期与事件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-d time <span class="string">"显示指定事件信息"</span></span><br></pre></td></tr></table></figure>
-<h3 id="时间格式"><a href="#时间格式" class="headerlink" title="时间格式"></a>时间格式</h3><p>%x yyyy/mm/dd 格式  %A 星期</p>
-<p>%T 24小时制，等于%H:%M:%S</p>
-<p>%r hh:mm:ss+ 上\下午<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ date +<span class="string">'%X %A %T'</span> //<span class="string">"空格用括号引起来"</span></span><br><span class="line">$ date -d 03/22/1977(19770322)</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/04/10/Linux-4-10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="weiyuan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Small Fat Fat">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/10/Linux-4-10/" itemprop="url">Linux 文件操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-10T15:37:49+08:00">
-                2018-04-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="sort命令"><a href="#sort命令" class="headerlink" title="sort命令"></a>sort命令</h1><h2 id="格式：sort-【options】-file-【file2】"><a href="#格式：sort-【options】-file-【file2】" class="headerlink" title="格式：sort 【options】 file 【file2】"></a>格式：sort 【options】 file 【file2】</h2><h3 id="功能：对文件内容进行排序"><a href="#功能：对文件内容进行排序" class="headerlink" title="功能：对文件内容进行排序"></a>功能：对文件内容进行排序</h3><p>选项<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-f <span class="string">"忽略大小写"</span></span><br><span class="line">-r <span class="string">"逆序排列"</span></span><br><span class="line">-kn <span class="string">"以第n个字段为基准进行排序，默认第1个字段"</span></span><br><span class="line">-m <span class="string">"合并排序"</span></span><br><span class="line">//例</span><br><span class="line">$ sort -f college.txt</span><br></pre></td></tr></table></figure></p>
-<h1 id="diff-命令"><a href="#diff-命令" class="headerlink" title="diff 命令"></a>diff 命令</h1><h2 id="格式：-diff-【options】-file1-fille2"><a href="#格式：-diff-【options】-file1-fille2" class="headerlink" title="格式： diff 【options】 file1 fille2"></a>格式： diff 【options】 file1 fille2</h2><h3 id="功能-比较文件异同"><a href="#功能-比较文件异同" class="headerlink" title="功能:比较文件异同"></a>功能:比较文件异同</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-i <span class="string">"忽略大小写"</span></span><br><span class="line">-b <span class="string">"忽略空格不同（似乎不起作用）"</span></span><br><span class="line">-B <span class="string">"忽略空行不痛"</span></span><br><span class="line">//例</span><br><span class="line">$ diff hello.c hellon.c</span><br></pre></td></tr></table></figure>
-<h1 id="zip-命令"><a href="#zip-命令" class="headerlink" title="zip 命令"></a>zip 命令</h1><h2 id="功能：将文件归档压缩成zip包"><a href="#功能：将文件归档压缩成zip包" class="headerlink" title="功能：将文件归档压缩成zip包"></a>功能：将文件归档压缩成zip包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-r <span class="string">"递归压缩"</span></span><br><span class="line">iu <span class="string">"更新包中同名文件或添加新文件"</span></span><br><span class="line">//例</span><br><span class="line">$ zip myzip.zip *c</span><br><span class="line">$ zip -u myzip.zip *.txt</span><br><span class="line">$ zip -r myall.zip *//<span class="string">"打包整个目录"</span></span><br></pre></td></tr></table></figure>
-<h1 id="unzip"><a href="#unzip" class="headerlink" title="unzip"></a>unzip</h1><h2 id="功能：解包"><a href="#功能：解包" class="headerlink" title="功能：解包"></a>功能：解包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-d dir <span class="string">"解压到指定目录"</span></span><br><span class="line">-v <span class="string">"不解包查看包文件"</span></span><br><span class="line">-n <span class="string">"不覆盖同名文件"</span></span><br><span class="line">-o <span class="string">"覆盖同名文件"</span></span><br><span class="line">-t <span class="string">"测试压缩包完整性"</span></span><br><span class="line">//例</span><br><span class="line">$ unzip -d tmp myzip.zip</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1548,7 +1561,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
