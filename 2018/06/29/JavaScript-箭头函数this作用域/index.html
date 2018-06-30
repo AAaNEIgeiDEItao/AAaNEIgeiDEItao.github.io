@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="JavaScript中，如果一个函数没有通过对象 123456789101112131415161718192021222324252627282930313233343536var o =  &amp;#123;	name : &apos;jwy&apos;,	age : 23,	func_this_showAge()&amp;#123;		(function()&amp;#123;console.log(this.age);&amp;#125;">
+<meta name="description" content="JavaScript中，如果一个函数没有作为对象的方法被对象调用，那么他的this的指向的是全局环境，而不是外部函数环境。通过以下几种方法，可以让this保持正常的指向 123456789101112131415161718192021222324252627282930313233343536var o =  &amp;#123;	name : &apos;jwy&apos;,	age : 23,	func_this_sh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript-this指向正常的几种写法">
 <meta property="og:url" content="https://aaaneigeideitao.github.io/2018/06/29/JavaScript-箭头函数this作用域/index.html">
 <meta property="og:site_name" content="Small Fat Fat">
-<meta property="og:description" content="JavaScript中，如果一个函数没有通过对象 123456789101112131415161718192021222324252627282930313233343536var o =  &amp;#123;	name : &apos;jwy&apos;,	age : 23,	func_this_showAge()&amp;#123;		(function()&amp;#123;console.log(this.age);&amp;#125;">
+<meta property="og:description" content="JavaScript中，如果一个函数没有作为对象的方法被对象调用，那么他的this的指向的是全局环境，而不是外部函数环境。通过以下几种方法，可以让this保持正常的指向 123456789101112131415161718192021222324252627282930313233343536var o =  &amp;#123;	name : &apos;jwy&apos;,	age : 23,	func_this_sh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-29T15:43:17.907Z">
+<meta property="og:updated_time" content="2018-06-30T01:58:48.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript-this指向正常的几种写法">
-<meta name="twitter:description" content="JavaScript中，如果一个函数没有通过对象 123456789101112131415161718192021222324252627282930313233343536var o =  &amp;#123;	name : &apos;jwy&apos;,	age : 23,	func_this_showAge()&amp;#123;		(function()&amp;#123;console.log(this.age);&amp;#125;">
+<meta name="twitter:description" content="JavaScript中，如果一个函数没有作为对象的方法被对象调用，那么他的this的指向的是全局环境，而不是外部函数环境。通过以下几种方法，可以让this保持正常的指向 123456789101112131415161718192021222324252627282930313233343536var o =  &amp;#123;	name : &apos;jwy&apos;,	age : 23,	func_this_sh">
 
 
 
@@ -309,9 +309,8 @@
       
 
       
-        <p>JavaScript中，如果一个函数没有通过对象</p>
+        <p>JavaScript中，如果一个函数没有作为对象的方法被对象调用，那么他的this的指向的是全局环境，而不是外部函数环境。<br>通过以下几种方法，可以让this保持正常的指向</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">var o =  &#123;</span><br><span class="line">	name : <span class="string">'jwy'</span>,</span><br><span class="line">	age : 23,</span><br><span class="line">	<span class="function"><span class="title">func_this_showAge</span></span>()&#123;</span><br><span class="line">		(<span class="function"><span class="title">function</span></span>()&#123;console.log(this.age);&#125;)();</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="function"><span class="title">func_bind_showAge</span></span>()&#123;</span><br><span class="line">		(<span class="function"><span class="title">function</span></span>()&#123;console.log(this.age);&#125;).<span class="built_in">bind</span>(this)();//主动通过函数的<span class="built_in">bind</span>()方法绑定this的指向</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="function"><span class="title">func_that_showAge</span></span>()&#123;</span><br><span class="line">		var that = this;//在这个函数作用域里新建一个变量指向this,使得this指向正确的位置</span><br><span class="line">		(<span class="function"><span class="title">function</span></span>()&#123;console.log(that.age);&#125;)();</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="function"><span class="title">arrowFunc_showAge</span></span>()&#123;</span><br><span class="line">		(()=&gt;console.log(this.age))();</span><br><span class="line">		/* ES6中的箭头函数,没有this的绑定,所以this的指向正常</span><br><span class="line">		  没有<span class="keyword">function</span>关键字定义的函数的特殊作用域</span><br><span class="line">       	而且不能箭头函数通过<span class="built_in">bind</span>或者call或者apply方法不会改变其this的指向,</span><br><span class="line">      */</span><br><span class="line">     </span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="function"><span class="title">callOrApply_showAge</span></span>()&#123;</span><br><span class="line">		var showAge = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			console.log(this.age);</span><br><span class="line">		&#125;</span><br><span class="line">		//通过call或者apply主动改变this的作用域</span><br><span class="line">		showAge.call(this,null);//23</span><br><span class="line">		showAge.apply(this,null);//23</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">o.func_this_showAge();//undefined</span><br><span class="line">o.func_bind_showAge();//23</span><br><span class="line">o.func_that_showAge();//23</span><br><span class="line">o.arrowFunc_showAge();//23</span><br><span class="line">o.callOrApply_showAge();//23 23</span><br></pre></td></tr></table></figure>
-
       
     </div>
     
