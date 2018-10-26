@@ -5,11 +5,11 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;+this.name);	&amp;#125;&amp;#125;; 属性数据属性这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的">
+<meta name="description" content="title: 关于Object.defineProperty()的一些要点tags: JavaScriptcategories: JavaScript  使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Object.defineProperty()的一些要点">
 <meta property="og:url" content="https://aaaneigeideitao.github.io/2018/06/05/关于Object-defineProperty-的一些要点/index.html">
-<meta property="og:site_name" content="Small Fat Fat">
-<meta property="og:description" content="使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;+this.name);	&amp;#125;&amp;#125;; 属性数据属性这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的">
+<meta property="og:site_name" content="前端开始工程师——weiyuanjia">
+<meta property="og:description" content="title: 关于Object.defineProperty()的一些要点tags: JavaScriptcategories: JavaScript  使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-05T13:09:29.232Z">
+<meta property="og:updated_time" content="2018-10-26T17:12:42.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Object.defineProperty()的一些要点">
-<meta name="twitter:description" content="使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;+this.name);	&amp;#125;&amp;#125;; 属性数据属性这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的">
+<meta name="twitter:description" content="title: 关于Object.defineProperty()的一些要点tags: JavaScriptcategories: JavaScript  使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;">
 
 
 
@@ -97,7 +97,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://aaaneigeideitao.github.io/2018/06/05/关于Object-defineProperty-的一些要点/"/>
+  <link rel="canonical" href="https://aaaneigeideitao.github.io/2018/06/05/关于Object-defineProperty-的一些要点/">
 
 
 
 
 
-  <title>关于Object.defineProperty()的一些要点 | Small Fat Fat</title>
+  <title>关于Object.defineProperty()的一些要点 | 前端开始工程师——weiyuanjia</title>
   
 
 
@@ -137,7 +137,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
 
   
   
@@ -147,20 +147,20 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Small Fat Fat</span>
+        <span class="site-title">前端开始工程师——weiyuanjia</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">心静则不热、不乱、不燥.</p>
+        <p class="site-subtitle">穷的只剩一台电脑</p>
       
   </div>
 
@@ -183,9 +183,19 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
           </a>
         </li>
       
@@ -193,7 +203,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -203,7 +213,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -237,21 +247,21 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/06/05/关于Object-defineProperty-的一些要点/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="weiyuan">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Small Fat Fat">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开始工程师——weiyuanjia">
     </span>
 
     
@@ -309,7 +319,9 @@
       
 
       
-        <h6 id="使用对象字面量定义对象"><a href="#使用对象字面量定义对象" class="headerlink" title="使用对象字面量定义对象"></a>使用对象字面量定义对象</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person1=&#123;</span><br><span class="line">	name:<span class="string">"Zhouquan"</span>,</span><br><span class="line">	age:23,</span><br><span class="line">	job:<span class="string">"student"</span>,</span><br><span class="line">	sayName:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		console.log(<span class="string">"name:"</span>+this.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <p>title: 关于Object.defineProperty()的一些要点<br>tags: JavaScript<br>categories: JavaScript</p>
+<hr>
+<h6 id="使用对象字面量定义对象"><a href="#使用对象字面量定义对象" class="headerlink" title="使用对象字面量定义对象"></a>使用对象字面量定义对象</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person1=&#123;</span><br><span class="line">	name:<span class="string">"Zhouquan"</span>,</span><br><span class="line">	age:23,</span><br><span class="line">	job:<span class="string">"student"</span>,</span><br><span class="line">	sayName:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		console.log(<span class="string">"name:"</span>+this.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><h2 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h2><p>这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的引擎用的，放在两对儿方括号中</p>
 <h3 id="Configurable"><a href="#Configurable" class="headerlink" title="[[Configurable]]:"></a>[[Configurable]]:</h3><p>表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性或者把属性修改成访问器属性。新定义的对象默认值是<code>true</code></p>
 <h3 id="Enumerable"><a href="#Enumerable" class="headerlink" title="[[Enumerable]]:"></a>[[Enumerable]]:</h3><p>表示能否通过for-in循环返回属性，新定义的对象默认值为<code>true</code></p>
@@ -373,8 +385,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/12/软件工程填空题/" rel="prev" title="软件工程填空题">
-                软件工程填空题 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/29/JavaScript-箭头函数this作用域/" rel="prev" title="JavaScript-this指向正常的几种写法">
+                JavaScript-this指向正常的几种写法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -439,7 +451,7 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">weiyuan</p>
               <p class="site-description motion-element" itemprop="description"></p>
@@ -452,7 +464,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -460,6 +472,15 @@
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -489,7 +510,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用对象字面量定义对象"><span class="nav-number">1.</span> <span class="nav-text">使用对象字面量定义对象</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性"><span class="nav-number"></span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据属性"><span class="nav-number"></span> <span class="nav-text">数据属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configurable"><span class="nav-number"></span> <span class="nav-text">[[Configurable]]:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enumerable"><span class="nav-number"></span> <span class="nav-text">[[Enumerable]]:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Writable"><span class="nav-number"></span> <span class="nav-text">[[Writable]]:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Value"><span class="nav-number"></span> <span class="nav-text">[[Value]]:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部属性用法"><span class="nav-number"></span> <span class="nav-text">内部属性用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number"></span> <span class="nav-text">Object.defineProperty()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于-Configurable-特性有以下注意"><span class="nav-number"></span> <span class="nav-text">关于[[Configurable]]特性有以下注意</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问器属性"><span class="nav-number"></span> <span class="nav-text">访问器属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-defineProperties-方法"><span class="nav-number"></span> <span class="nav-text">Object.defineProperties()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#提示"><span class="nav-number"></span> <span class="nav-text">提示</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#使用对象字面量定义对象"><span class="nav-number">1.</span> <span class="nav-text">使用对象字面量定义对象</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#属性"><span class="nav-number"></span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据属性"><span class="nav-number"></span> <span class="nav-text">数据属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configurable"><span class="nav-number"></span> <span class="nav-text">[[Configurable]]:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enumerable"><span class="nav-number"></span> <span class="nav-text">[[Enumerable]]:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Writable"><span class="nav-number"></span> <span class="nav-text">[[Writable]]:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Value"><span class="nav-number"></span> <span class="nav-text">[[Value]]:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部属性用法"><span class="nav-number"></span> <span class="nav-text">内部属性用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number"></span> <span class="nav-text">Object.defineProperty()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于-Configurable-特性有以下注意"><span class="nav-number"></span> <span class="nav-text">关于[[Configurable]]特性有以下注意</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问器属性"><span class="nav-number"></span> <span class="nav-text">访问器属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-defineProperties-方法"><span class="nav-number"></span> <span class="nav-text">Object.defineProperties()方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#提示"><span class="nav-number"></span> <span class="nav-text">提示</span></a></li></ol></li></ol></li></div>
             
 
           </div>
@@ -527,7 +548,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -626,6 +647,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
