@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="title: 关于Object.defineProperty()的一些要点tags: JavaScriptcategories: JavaScript  使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;">
+<meta name="description" content="使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;+this.name);	&amp;#125;&amp;#125;; 属性数据属性这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Object.defineProperty()的一些要点">
 <meta property="og:url" content="https://aaaneigeideitao.github.io/2018/06/05/关于Object-defineProperty-的一些要点/index.html">
 <meta property="og:site_name" content="前端开发工程师——wyj">
-<meta property="og:description" content="title: 关于Object.defineProperty()的一些要点tags: JavaScriptcategories: JavaScript  使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;">
+<meta property="og:description" content="使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;+this.name);	&amp;#125;&amp;#125;; 属性数据属性这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-26T17:17:51.446Z">
+<meta property="og:updated_time" content="2018-10-27T06:44:10.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Object.defineProperty()的一些要点">
-<meta name="twitter:description" content="title: 关于Object.defineProperty()的一些要点tags: JavaScriptcategories: JavaScript  使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;">
+<meta name="twitter:description" content="使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;+this.name);	&amp;#125;&amp;#125;; 属性数据属性这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的">
 
 
 
@@ -342,9 +342,7 @@
       
 
       
-        <p>title: 关于Object.defineProperty()的一些要点<br>tags: JavaScript<br>categories: JavaScript</p>
-<hr>
-<h6 id="使用对象字面量定义对象"><a href="#使用对象字面量定义对象" class="headerlink" title="使用对象字面量定义对象"></a>使用对象字面量定义对象</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person1=&#123;</span><br><span class="line">	name:<span class="string">"Zhouquan"</span>,</span><br><span class="line">	age:23,</span><br><span class="line">	job:<span class="string">"student"</span>,</span><br><span class="line">	sayName:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		console.log(<span class="string">"name:"</span>+this.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h6 id="使用对象字面量定义对象"><a href="#使用对象字面量定义对象" class="headerlink" title="使用对象字面量定义对象"></a>使用对象字面量定义对象</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var person1=&#123;</span><br><span class="line">	name:<span class="string">"Zhouquan"</span>,</span><br><span class="line">	age:23,</span><br><span class="line">	job:<span class="string">"student"</span>,</span><br><span class="line">	sayName:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		console.log(<span class="string">"name:"</span>+this.name);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><h2 id="数据属性"><a href="#数据属性" class="headerlink" title="数据属性"></a>数据属性</h2><p>这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的引擎用的，放在两对儿方括号中</p>
 <h3 id="Configurable"><a href="#Configurable" class="headerlink" title="[[Configurable]]:"></a>[[Configurable]]:</h3><p>表示能否通过delete删除属性从而重新定义属性，能否修改属性的特性或者把属性修改成访问器属性。新定义的对象默认值是<code>true</code></p>
 <h3 id="Enumerable"><a href="#Enumerable" class="headerlink" title="[[Enumerable]]:"></a>[[Enumerable]]:</h3><p>表示能否通过for-in循环返回属性，新定义的对象默认值为<code>true</code></p>
@@ -493,7 +491,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -515,7 +513,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
