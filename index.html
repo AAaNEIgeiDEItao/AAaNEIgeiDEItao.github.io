@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini" lang="">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -98,7 +96,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -280,7 +278,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-29T22:43:08+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-29T22:43:00+08:00">
                 2018-06-29
               </time>
             
@@ -290,6 +288,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -400,7 +420,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:44:55+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:44:00+08:00">
                 2018-06-05
               </time>
             
@@ -571,7 +591,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:38:02+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:38:00+08:00">
                 2018-06-05
               </time>
             
@@ -581,6 +601,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Compatibility/" itemprop="url" rel="index">
+                    <span itemprop="name">Compatibility</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -691,7 +733,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T20:38:08+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-19T20:38:00+08:00">
                 2018-05-19
               </time>
             
@@ -701,6 +743,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -732,7 +796,7 @@
         
           
             <p>最近学习Vue和实现事件一对多观察的时候，提到了观察者模式，经过看书加上自己的理解，写了个这么一个例子。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">class FansList &#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span></span>() &#123;</span><br><span class="line">		this.fansList = [];//设置粉丝群</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Add(obj) &#123;</span><br><span class="line">		<span class="built_in">return</span> this.fansList.push(obj);//粉丝群直接添加粉丝按顺序</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="title">Empty</span></span>() &#123;</span><br><span class="line">		this.fansList = [];//清空粉丝群</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="title">Count</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> this.fansList.length;//统计粉丝群人数</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Get(index) &#123;</span><br><span class="line">		<span class="keyword">if</span>(index &gt; -1 &amp;&amp; index &lt; this.fansList.length) &#123;</span><br><span class="line">			<span class="built_in">return</span> this.fansList[index];//寻找指定粉丝号的粉丝</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Insert(obj, index) &#123;//粉丝群人员变动，改变号码，添加粉丝</span><br><span class="line">		var pointer = -1;</span><br><span class="line">		<span class="keyword">if</span>(index === 0) &#123;</span><br><span class="line">			this.fansList.unshift(obj);</span><br><span class="line">			pointer = index;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(index === this.fansList.length) &#123;</span><br><span class="line">			this.fansList.push(obj);</span><br><span class="line">			pointer = index;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> pointer;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	IndexOf(obj, startIndex) &#123;//寻找指定粉丝，返回她的粉丝号</span><br><span class="line">		const i = startIndex,</span><br><span class="line">		pointer = -1;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span>(i &lt; this.fansList.length) &#123;</span><br><span class="line">			<span class="keyword">if</span>(this.fansList[i] === obj) &#123;</span><br><span class="line">				pointer = i;</span><br><span class="line">			&#125;</span><br><span class="line">			i++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> pointer;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	RemoveIndexAt(index) &#123;//踢出粉丝群</span><br><span class="line">		<span class="keyword">if</span>(index === 0) &#123;</span><br><span class="line">			this.fansList.shift();</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(index === this.fansList.length - 1) &#123;</span><br><span class="line">			this.fansList.pop();</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			this.fansList.splice(index, 1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Star &#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span></span>() &#123;</span><br><span class="line">		this.fanBase = new FansList();//初始化被观察者的粉丝们</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	AddFans(fans) &#123;</span><br><span class="line">		this.fanBase.Add(fans);//增加一个粉丝</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	RemoveFans(fans) &#123;</span><br><span class="line">		this.fanBase.RemoveIndexAt(this.fansBase.IndexOf(fans, 0));//移除一个粉丝</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Notify(context) &#123;//将信息按粉丝号通知给各位粉丝</span><br><span class="line">		const fansCount = this.fanBase.Count();</span><br><span class="line">		<span class="keyword">for</span>(var i = 0; i &lt; fansCount; i++) &#123;</span><br><span class="line">			this.fanBase.Get(i).Update(context);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> baseNum=100;//设置基础号码</span><br><span class="line">class Fans&#123;</span><br><span class="line">	<span class="function"><span class="title">constructor</span></span>()&#123;</span><br><span class="line">		this.No=baseNum++;</span><br><span class="line"></span><br><span class="line">		this.Update=<span class="keyword">function</span>(content)&#123;	</span><br><span class="line">			console.log(<span class="string">"No."</span>+this.No+<span class="string">'\t'</span>+content);</span><br><span class="line">		&#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*new个巨星:克里斯蒂亚诺.罗纳尔多*/</span><br><span class="line">const CR7=new Star();</span><br><span class="line">/*new个巨星已经new了个粉丝群*/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*new 几个粉丝*/</span><br><span class="line">const jwy=new Fans();</span><br><span class="line">const liuqian=new Fans();</span><br><span class="line">const zhouquan=new Fans();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/*添加粉丝*/</span><br><span class="line">CR7.AddFans(jwy);</span><br><span class="line">CR7.AddFans(liuqian);</span><br><span class="line">CR7.AddFans(zhouquan);</span><br><span class="line"></span><br><span class="line">/*让你们来看欧冠决赛*/</span><br><span class="line">CR7.Notify(<span class="string">"5月26日 去看欧冠决赛"</span>);</span><br></pre></td></tr></table></figure></p>
-<p>输出结果：<br><img src="\ images\pasted-0.png" alt="upload successful"></p>
+<p>输出结果：<br><img src="\images\pasted-0.png" alt="upload successful"></p>
 
           
         
@@ -975,6 +1039,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1091,7 +1177,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-27T14:12:43+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-27T14:12:00+08:00">
                 2018-04-27
               </time>
             
@@ -1101,6 +1187,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1214,7 +1322,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T15:37:27+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T15:37:00+08:00">
                 2018-04-24
               </time>
             
@@ -1379,6 +1487,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JSON/" itemprop="url" rel="index">
+                    <span itemprop="name">JSON</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1503,7 +1633,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-14T19:19:10+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-14T19:19:00+08:00">
                 2018-04-14
               </time>
             
@@ -1513,6 +1643,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1550,8 +1702,8 @@
 <p>4.同一个模块加载多次只能运行一次</p>
 <p>5.模块中使用import命令加载其他模块，使用export命令输出对外接口 </p>
 <h6 id="Es6模块与CommonJS模块的差异"><a href="#Es6模块与CommonJS模块的差异" class="headerlink" title="Es6模块与CommonJS模块的差异"></a>Es6模块与CommonJS模块的差异</h6><p>1.CommonJS模块输出的是一个值的复制，ES6模块输出的是一个值的引用<br>一旦输出一个值，模块内部的变化不会污染到这个值</p>
-<p><img src="\ images\pasted-18.png" alt="upload successful"></p>
-<p><img src="\ images\pasted-17.png" alt="upload successful"><br>2.CommonJS模块是运行时加载，ES6模块式编译时输出接口<br>3.CommonJS加载的是一个对象，而ES6加载的是一个静态接口，所以在编译时就会输出</p>
+<p><img src="\images\pasted-18.png" alt="upload successful"></p>
+<p><img src="\images\pasted-17.png" alt="upload successful"><br>2.CommonJS模块是运行时加载，ES6模块式编译时输出接口<br>3.CommonJS加载的是一个对象，而ES6加载的是一个静态接口，所以在编译时就会输出</p>
 
           
         
@@ -1648,7 +1800,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1659,7 +1811,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

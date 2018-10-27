@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini" lang="">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Arrows,JavaScript-this,bind(),call,apply,_this,">
 
 
 
@@ -80,13 +78,14 @@
 
 
 <meta name="description" content="JavaScript中，如果一个函数没有作为对象的方法被对象调用，那么他的this的指向的是全局环境，而不是外部函数环境。通过以下几种方法，可以让this保持正常的指向 123456789101112131415161718192021222324252627282930313233343536var o =  &amp;#123;	name : &apos;jwy&apos;,	age : 23,	func_this_sh">
+<meta name="keywords" content="Arrows,JavaScript-this,bind(),call,apply,_this">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript-this指向正常的几种写法">
 <meta property="og:url" content="https://aaaneigeideitao.github.io/2018/06/29/JavaScript-箭头函数this作用域/index.html">
 <meta property="og:site_name" content="前端开发工程师——wyj">
 <meta property="og:description" content="JavaScript中，如果一个函数没有作为对象的方法被对象调用，那么他的this的指向的是全局环境，而不是外部函数环境。通过以下几种方法，可以让this保持正常的指向 123456789101112131415161718192021222324252627282930313233343536var o =  &amp;#123;	name : &apos;jwy&apos;,	age : 23,	func_this_sh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-27T06:44:19.256Z">
+<meta property="og:updated_time" content="2018-10-27T14:21:22.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript-this指向正常的几种写法">
 <meta name="twitter:description" content="JavaScript中，如果一个函数没有作为对象的方法被对象调用，那么他的this的指向的是全局环境，而不是外部函数环境。通过以下几种方法，可以让this保持正常的指向 123456789101112131415161718192021222324252627282930313233343536var o =  &amp;#123;	name : &apos;jwy&apos;,	age : 23,	func_this_sh">
@@ -102,7 +101,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -281,7 +280,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-29T22:43:08+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-29T22:43:00+08:00">
                 2018-06-29
               </time>
             
@@ -291,6 +290,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -334,6 +355,22 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Arrows/" rel="tag"># Arrows</a>
+          
+            <a href="/tags/JavaScript-this/" rel="tag"># JavaScript-this</a>
+          
+            <a href="/tags/bind/" rel="tag"># bind()</a>
+          
+            <a href="/tags/call/" rel="tag"># call</a>
+          
+            <a href="/tags/apply/" rel="tag"># apply</a>
+          
+            <a href="/tags/this/" rel="tag"># _this</a>
+          
+        </div>
       
 
       
@@ -431,7 +468,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -442,7 +479,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

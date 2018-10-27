@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini" lang="">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript,">
+  <meta name="keywords" content="Object,defineProperty,getter,setter,">
 
 
 
@@ -80,14 +78,14 @@
 
 
 <meta name="description" content="使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;+this.name);	&amp;#125;&amp;#125;; 属性数据属性这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的">
-<meta name="keywords" content="JavaScript">
+<meta name="keywords" content="Object,defineProperty,getter,setter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Object.defineProperty()的一些要点">
 <meta property="og:url" content="https://aaaneigeideitao.github.io/2018/06/05/关于Object-defineProperty-的一些要点/index.html">
 <meta property="og:site_name" content="前端开发工程师——wyj">
 <meta property="og:description" content="使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;+this.name);	&amp;#125;&amp;#125;; 属性数据属性这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-27T06:44:10.903Z">
+<meta property="og:updated_time" content="2018-10-27T14:25:09.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Object.defineProperty()的一些要点">
 <meta name="twitter:description" content="使用对象字面量定义对象12345678var person1=&amp;#123;	name:&quot;Zhouquan&quot;,	age:23,	job:&quot;student&quot;,	sayName:function()&amp;#123;		console.log(&quot;name:&quot;+this.name);	&amp;#125;&amp;#125;; 属性数据属性这些属性是ES5才出现的，描述了内部特征，不能直接访问，是为了实现javascript的">
@@ -103,7 +101,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -282,7 +280,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:44:55+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:44:00+08:00">
                 2018-06-05
               </time>
             
@@ -389,7 +387,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/Object/" rel="tag"># Object</a>
+          
+            <a href="/tags/defineProperty/" rel="tag"># defineProperty</a>
+          
+            <a href="/tags/getter/" rel="tag"># getter</a>
+          
+            <a href="/tags/setter/" rel="tag"># setter</a>
           
         </div>
       
@@ -502,7 +506,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -513,7 +517,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

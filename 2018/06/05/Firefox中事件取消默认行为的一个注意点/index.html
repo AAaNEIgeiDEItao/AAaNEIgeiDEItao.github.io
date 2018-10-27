@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini" lang="">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -68,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="FireFox,preventDefault,Chrome,event,">
 
 
 
@@ -80,13 +78,14 @@
 
 
 <meta name="description" content="今天在写表单的取消默认行为时，在使用event.preventDefault()给表单的提交按钮取消默认行为时，没有显示的在函数里定义event参数，在Chrome下可以实现目的，但是在火狐下控制台输出错误event is not defined，给函数加上显示加上event参数后，测试通过。">
+<meta name="keywords" content="FireFox,preventDefault,Chrome,event">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Firefox中事件取消默认行为的一个注意点">
 <meta property="og:url" content="https://aaaneigeideitao.github.io/2018/06/05/Firefox中事件取消默认行为的一个注意点/index.html">
 <meta property="og:site_name" content="前端开发工程师——wyj">
 <meta property="og:description" content="今天在写表单的取消默认行为时，在使用event.preventDefault()给表单的提交按钮取消默认行为时，没有显示的在函数里定义event参数，在Chrome下可以实现目的，但是在火狐下控制台输出错误event is not defined，给函数加上显示加上event参数后，测试通过。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-05T12:43:48.000Z">
+<meta property="og:updated_time" content="2018-10-27T14:27:42.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Firefox中事件取消默认行为的一个注意点">
 <meta name="twitter:description" content="今天在写表单的取消默认行为时，在使用event.preventDefault()给表单的提交按钮取消默认行为时，没有显示的在函数里定义event参数，在Chrome下可以实现目的，但是在火狐下控制台输出错误event is not defined，给函数加上显示加上event参数后，测试通过。">
@@ -102,7 +101,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: 'Author'
@@ -281,7 +280,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:38:02+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T20:38:00+08:00">
                 2018-06-05
               </time>
             
@@ -291,6 +290,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Compatibility/" itemprop="url" rel="index">
+                    <span itemprop="name">Compatibility</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -334,6 +355,18 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/FireFox/" rel="tag"># FireFox</a>
+          
+            <a href="/tags/preventDefault/" rel="tag"># preventDefault</a>
+          
+            <a href="/tags/Chrome/" rel="tag"># Chrome</a>
+          
+            <a href="/tags/event/" rel="tag"># event</a>
+          
+        </div>
       
 
       
@@ -435,7 +468,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -446,7 +479,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
