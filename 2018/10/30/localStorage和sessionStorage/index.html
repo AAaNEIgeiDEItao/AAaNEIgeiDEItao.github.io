@@ -77,13 +77,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="前端开发工程师——wyj">
-<meta property="og:url" content="https://aaaneigeideitao.github.io/categories/Linux/index.html">
+<meta name="description" content="localStorage: 永久性（除非用户主动删除或者Web应用刻意删除） 同源共享性 浏览器限制 暂时只能以字符串形式存储  sessionStorage: 同源 限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享 暂时只能以字符串形式存储 窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）  两个拥有相同的API:setI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="localStorage和sessionStorage">
+<meta property="og:url" content="https://aaaneigeideitao.github.io/2018/10/30/localStorage和sessionStorage/index.html">
 <meta property="og:site_name" content="前端开发工程师——wyj">
+<meta property="og:description" content="localStorage: 永久性（除非用户主动删除或者Web应用刻意删除） 同源共享性 浏览器限制 暂时只能以字符串形式存储  sessionStorage: 同源 限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享 暂时只能以字符串形式存储 窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）  两个拥有相同的API:setI">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-30T01:18:37.479Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端开发工程师——wyj">
+<meta name="twitter:title" content="localStorage和sessionStorage">
+<meta name="twitter:description" content="localStorage: 永久性（除非用户主动删除或者Web应用刻意删除） 同源共享性 浏览器限制 暂时只能以字符串形式存储  sessionStorage: 同源 限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享 暂时只能以字符串形式存储 窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）  两个拥有相同的API:setI">
 
 
 
@@ -113,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="https://aaaneigeideitao.github.io/categories/Linux/">
+  <link rel="canonical" href="https://aaaneigeideitao.github.io/2018/10/30/localStorage和sessionStorage/">
 
 
 
 
 
-  <title>Category: Linux | 前端开发工程师——wyj</title>
+  <title>localStorage和sessionStorage | 前端开发工程师——wyj</title>
   
 
 
@@ -138,7 +142,7 @@
     
   
 
-  <div class="container sidebar-position-right ">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -232,131 +236,155 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Linux<small>Category</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/10/30/localStorage和sessionStorage/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发工程师——wyj">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/08/LINUX-5-8/" itemprop="url">
-              
-                <span itemprop="name">LINUX 5/8</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">localStorage和sessionStorage</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-05-08T15:42:45+08:00" content="2018-05-08">
-          05-08
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T09:11:18+08:00">
+                2018-10-30
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/24/Linux-命令4-24/" itemprop="url">
-              
-                <span itemprop="name">Linux 命令4/24</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-04-24T15:37:00+08:00" content="2018-04-24">
-          04-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/10/Linux-磁盘管理命令/" itemprop="url">
-              
-                <span itemprop="name">Linux 磁盘管理命令</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-04-10T15:53:55+08:00" content="2018-04-10">
-          04-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/10/Linux-4-10/" itemprop="url">
-              
-                <span itemprop="name">Linux 文件操作</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-04-10T15:37:00+08:00" content="2018-04-10">
-          04-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage:"></a>localStorage:</h1><ul>
+<li>永久性（除非用户主动删除或者Web应用刻意删除）</li>
+<li>同源共享性</li>
+<li>浏览器限制</li>
+<li>暂时只能以字符串形式存储</li>
+</ul>
+<h1 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage:"></a>sessionStorage:</h1><ul>
+<li>同源</li>
+<li>限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享</li>
+<li>暂时只能以字符串形式存储</li>
+<li>窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）</li>
+</ul>
+<h1 id="两个拥有相同的API"><a href="#两个拥有相同的API" class="headerlink" title="两个拥有相同的API:"></a>两个拥有相同的API:</h1><h2 id="setItem-k-v-设置字段，k代表字段名，v代表值"><a href="#setItem-k-v-设置字段，k代表字段名，v代表值" class="headerlink" title="setItem(k,v):设置字段，k代表字段名，v代表值"></a>setItem(k,v):设置字段，k代表字段名，v代表值</h2><h2 id="getItem-k-获取指定值"><a href="#getItem-k-获取指定值" class="headerlink" title="getItem(k):获取指定值"></a>getItem(k):获取指定值</h2><h2 id="removeItem-k"><a href="#removeItem-k" class="headerlink" title="removeItem(k):"></a>removeItem(k):</h2><h2 id="Clear-清除所有字段"><a href="#Clear-清除所有字段" class="headerlink" title="Clear():清除所有字段"></a>Clear():清除所有字段</h2><h2 id="Key-i-取出指定字段"><a href="#Key-i-取出指定字段" class="headerlink" title="Key(i):取出指定字段"></a>Key(i):取出指定字段</h2><h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点:"></a>注意点:</h1><ul>
+<li>因为对象不能直接存在Storage中,必须序列化之后才能入库</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/29/JavaScript-箭头函数this作用域/" rel="next" title="JavaScript-this指向正常的几种写法">
+                <i class="fa fa-chevron-left"></i> JavaScript-this指向正常的几种写法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -364,6 +392,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -384,8 +416,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -463,6 +504,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#localStorage"><span class="nav-number">1.</span> <span class="nav-text">localStorage:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sessionStorage"><span class="nav-number">2.</span> <span class="nav-text">sessionStorage:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#两个拥有相同的API"><span class="nav-number">3.</span> <span class="nav-text">两个拥有相同的API:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setItem-k-v-设置字段，k代表字段名，v代表值"><span class="nav-number">3.1.</span> <span class="nav-text">setItem(k,v):设置字段，k代表字段名，v代表值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getItem-k-获取指定值"><span class="nav-number">3.2.</span> <span class="nav-text">getItem(k):获取指定值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#removeItem-k"><span class="nav-number">3.3.</span> <span class="nav-text">removeItem(k):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clear-清除所有字段"><span class="nav-number">3.4.</span> <span class="nav-text">Clear():清除所有字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-i-取出指定字段"><span class="nav-number">3.5.</span> <span class="nav-text">Key(i):取出指定字段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意点"><span class="nav-number">4.</span> <span class="nav-text">注意点:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -603,6 +660,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

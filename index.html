@@ -247,6 +247,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/10/30/localStorage和sessionStorage/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="weiyuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="前端开发工程师——wyj">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/30/localStorage和sessionStorage/" itemprop="url">localStorage和sessionStorage</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T09:11:18+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage:"></a>localStorage:</h1><ul>
+<li>永久性（除非用户主动删除或者Web应用刻意删除）</li>
+<li>同源共享性</li>
+<li>浏览器限制</li>
+<li>暂时只能以字符串形式存储</li>
+</ul>
+<h1 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage:"></a>sessionStorage:</h1><ul>
+<li>同源</li>
+<li>限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享</li>
+<li>暂时只能以字符串形式存储</li>
+<li>窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）</li>
+</ul>
+<h1 id="两个拥有相同的API"><a href="#两个拥有相同的API" class="headerlink" title="两个拥有相同的API:"></a>两个拥有相同的API:</h1><h2 id="setItem-k-v-设置字段，k代表字段名，v代表值"><a href="#setItem-k-v-设置字段，k代表字段名，v代表值" class="headerlink" title="setItem(k,v):设置字段，k代表字段名，v代表值"></a>setItem(k,v):设置字段，k代表字段名，v代表值</h2><h2 id="getItem-k-获取指定值"><a href="#getItem-k-获取指定值" class="headerlink" title="getItem(k):获取指定值"></a>getItem(k):获取指定值</h2><h2 id="removeItem-k"><a href="#removeItem-k" class="headerlink" title="removeItem(k):"></a>removeItem(k):</h2><h2 id="Clear-清除所有字段"><a href="#Clear-清除所有字段" class="headerlink" title="Clear():清除所有字段"></a>Clear():清除所有字段</h2><h2 id="Key-i-取出指定字段"><a href="#Key-i-取出指定字段" class="headerlink" title="Key(i):取出指定字段"></a>Key(i):取出指定字段</h2><h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点:"></a>注意点:</h1><ul>
+<li>因为对象不能直接存在Storage中,必须序列化之后才能入库</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/06/29/JavaScript-箭头函数this作用域/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1589,156 +1723,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/04/14/ES6-module/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="weiyuan">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="前端开发工程师——wyj">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/14/ES6-module/" itemprop="url">ES6:module</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-14T19:19:00+08:00">
-                2018-04-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ES6之前，一个JS中定义的一切共享一个作用域，随着开发需求，解决作用域、命名冲突和安全问题，ES6中引入了模块（module）.</p>
-<h6 id="模块特点"><a href="#模块特点" class="headerlink" title="模块特点"></a>模块特点</h6><p>1.自动使用严格模式</p>
-<p>2.模块内部的顶层变量外部不可见</p>
-<p>3.顶层的this关键字总是返回undefined，而不是指向window</p>
-<p>4.同一个模块加载多次只能运行一次</p>
-<p>5.模块中使用import命令加载其他模块，使用export命令输出对外接口 </p>
-<h6 id="Es6模块与CommonJS模块的差异"><a href="#Es6模块与CommonJS模块的差异" class="headerlink" title="Es6模块与CommonJS模块的差异"></a>Es6模块与CommonJS模块的差异</h6><p>1.CommonJS模块输出的是一个值的复制，ES6模块输出的是一个值的引用<br>一旦输出一个值，模块内部的变化不会污染到这个值</p>
-<p><img src="\images\pasted-18.png" alt="upload successful"></p>
-<p><img src="\images\pasted-17.png" alt="upload successful"><br>2.CommonJS模块是运行时加载，ES6模块式编译时输出接口<br>3.CommonJS加载的是一个对象，而ES6加载的是一个静态接口，所以在编译时就会输出</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1791,7 +1775,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
