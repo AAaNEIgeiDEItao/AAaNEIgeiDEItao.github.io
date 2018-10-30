@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Storage,localStorage,sessionStorage,">
 
 
 
@@ -77,17 +77,18 @@
 
 
 
-<meta name="description" content="localStorage: 永久性（除非用户主动删除或者Web应用刻意删除） 同源共享性 浏览器限制 暂时只能以字符串形式存储  sessionStorage: 同源 限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享 暂时只能以字符串形式存储 窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）  两个拥有相同的API:setI">
+<meta name="description" content="localStorage 永久性（除非用户主动删除或者Web应用刻意删除） 同源共享性 浏览器限制 暂时只能以字符串形式存储  sessionStorage 同源 限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享 暂时只能以字符串形式存储 窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）  共同的API:setItem(k,">
+<meta name="keywords" content="Storage,localStorage,sessionStorage">
 <meta property="og:type" content="article">
 <meta property="og:title" content="localStorage和sessionStorage">
 <meta property="og:url" content="https://aaaneigeideitao.github.io/2018/10/30/localStorage和sessionStorage/index.html">
 <meta property="og:site_name" content="前端开发工程师——wyj">
-<meta property="og:description" content="localStorage: 永久性（除非用户主动删除或者Web应用刻意删除） 同源共享性 浏览器限制 暂时只能以字符串形式存储  sessionStorage: 同源 限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享 暂时只能以字符串形式存储 窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）  两个拥有相同的API:setI">
+<meta property="og:description" content="localStorage 永久性（除非用户主动删除或者Web应用刻意删除） 同源共享性 浏览器限制 暂时只能以字符串形式存储  sessionStorage 同源 限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享 暂时只能以字符串形式存储 窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）  共同的API:setItem(k,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-30T01:18:37.479Z">
+<meta property="og:updated_time" content="2018-10-30T02:01:56.093Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="localStorage和sessionStorage">
-<meta name="twitter:description" content="localStorage: 永久性（除非用户主动删除或者Web应用刻意删除） 同源共享性 浏览器限制 暂时只能以字符串形式存储  sessionStorage: 同源 限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享 暂时只能以字符串形式存储 窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）  两个拥有相同的API:setI">
+<meta name="twitter:description" content="localStorage 永久性（除非用户主动删除或者Web应用刻意删除） 同源共享性 浏览器限制 暂时只能以字符串形式存储  sessionStorage 同源 限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享 暂时只能以字符串形式存储 窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）  共同的API:setItem(k,">
 
 
 
@@ -279,7 +280,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T09:11:18+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T09:11:00+08:00">
                 2018-10-30
               </time>
             
@@ -289,6 +290,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/客户端存储/" itemprop="url" rel="index">
+                    <span itemprop="name">客户端存储</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -317,19 +340,19 @@
       
 
       
-        <h1 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage:"></a>localStorage:</h1><ul>
+        <h1 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h1><ul>
 <li>永久性（除非用户主动删除或者Web应用刻意删除）</li>
 <li>同源共享性</li>
 <li>浏览器限制</li>
 <li>暂时只能以字符串形式存储</li>
 </ul>
-<h1 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage:"></a>sessionStorage:</h1><ul>
+<h1 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h1><ul>
 <li>同源</li>
 <li>限定在同一顶级窗口(同窗口中两个iframe可以共享sessionStorage)，两个标签页不能共享</li>
 <li>暂时只能以字符串形式存储</li>
 <li>窗口和标签页被关闭就清除（排除一些浏览器可以恢复上次页面，可以恢复）</li>
 </ul>
-<h1 id="两个拥有相同的API"><a href="#两个拥有相同的API" class="headerlink" title="两个拥有相同的API:"></a>两个拥有相同的API:</h1><h2 id="setItem-k-v-设置字段，k代表字段名，v代表值"><a href="#setItem-k-v-设置字段，k代表字段名，v代表值" class="headerlink" title="setItem(k,v):设置字段，k代表字段名，v代表值"></a>setItem(k,v):设置字段，k代表字段名，v代表值</h2><h2 id="getItem-k-获取指定值"><a href="#getItem-k-获取指定值" class="headerlink" title="getItem(k):获取指定值"></a>getItem(k):获取指定值</h2><h2 id="removeItem-k"><a href="#removeItem-k" class="headerlink" title="removeItem(k):"></a>removeItem(k):</h2><h2 id="Clear-清除所有字段"><a href="#Clear-清除所有字段" class="headerlink" title="Clear():清除所有字段"></a>Clear():清除所有字段</h2><h2 id="Key-i-取出指定字段"><a href="#Key-i-取出指定字段" class="headerlink" title="Key(i):取出指定字段"></a>Key(i):取出指定字段</h2><h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点:"></a>注意点:</h1><ul>
+<h1 id="共同的API"><a href="#共同的API" class="headerlink" title="共同的API:"></a>共同的API:</h1><h2 id="setItem-k-v-设置字段，k代表字段名，v代表值"><a href="#setItem-k-v-设置字段，k代表字段名，v代表值" class="headerlink" title="setItem(k,v):设置字段，k代表字段名，v代表值"></a>setItem(k,v):设置字段，k代表字段名，v代表值</h2><h2 id="getItem-k-获取指定值"><a href="#getItem-k-获取指定值" class="headerlink" title="getItem(k):获取指定值"></a>getItem(k):获取指定值</h2><h2 id="removeItem-k-删除指定字段"><a href="#removeItem-k-删除指定字段" class="headerlink" title="removeItem(k):删除指定字段"></a>removeItem(k):删除指定字段</h2><h2 id="Clear-清除所有字段"><a href="#Clear-清除所有字段" class="headerlink" title="Clear():清除所有字段"></a>Clear():清除所有字段</h2><h2 id="Key-i-取出指定字段"><a href="#Key-i-取出指定字段" class="headerlink" title="Key(i):取出指定字段"></a>Key(i):取出指定字段</h2><h1 id="注意点"><a href="#注意点" class="headerlink" title="注意点:"></a>注意点:</h1><ul>
 <li>因为对象不能直接存在Storage中,必须序列化之后才能入库</li>
 </ul>
 
@@ -346,6 +369,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Storage/" rel="tag"># Storage</a>
+          
+            <a href="/tags/localStorage/" rel="tag"># localStorage</a>
+          
+            <a href="/tags/sessionStorage/" rel="tag"># sessionStorage</a>
+          
+        </div>
       
 
       
@@ -454,7 +487,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -465,7 +498,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -514,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#localStorage"><span class="nav-number">1.</span> <span class="nav-text">localStorage:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sessionStorage"><span class="nav-number">2.</span> <span class="nav-text">sessionStorage:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#两个拥有相同的API"><span class="nav-number">3.</span> <span class="nav-text">两个拥有相同的API:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setItem-k-v-设置字段，k代表字段名，v代表值"><span class="nav-number">3.1.</span> <span class="nav-text">setItem(k,v):设置字段，k代表字段名，v代表值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getItem-k-获取指定值"><span class="nav-number">3.2.</span> <span class="nav-text">getItem(k):获取指定值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#removeItem-k"><span class="nav-number">3.3.</span> <span class="nav-text">removeItem(k):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clear-清除所有字段"><span class="nav-number">3.4.</span> <span class="nav-text">Clear():清除所有字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-i-取出指定字段"><span class="nav-number">3.5.</span> <span class="nav-text">Key(i):取出指定字段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意点"><span class="nav-number">4.</span> <span class="nav-text">注意点:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#localStorage"><span class="nav-number">1.</span> <span class="nav-text">localStorage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sessionStorage"><span class="nav-number">2.</span> <span class="nav-text">sessionStorage</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#共同的API"><span class="nav-number">3.</span> <span class="nav-text">共同的API:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#setItem-k-v-设置字段，k代表字段名，v代表值"><span class="nav-number">3.1.</span> <span class="nav-text">setItem(k,v):设置字段，k代表字段名，v代表值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#getItem-k-获取指定值"><span class="nav-number">3.2.</span> <span class="nav-text">getItem(k):获取指定值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#removeItem-k-删除指定字段"><span class="nav-number">3.3.</span> <span class="nav-text">removeItem(k):删除指定字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clear-清除所有字段"><span class="nav-number">3.4.</span> <span class="nav-text">Clear():清除所有字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-i-取出指定字段"><span class="nav-number">3.5.</span> <span class="nav-text">Key(i):取出指定字段</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意点"><span class="nav-number">4.</span> <span class="nav-text">注意点:</span></a></li></ol></div>
             
 
           </div>
