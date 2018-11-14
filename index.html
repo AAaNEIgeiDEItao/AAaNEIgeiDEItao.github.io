@@ -247,6 +247,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/11/13/MongoDB学习笔记（一）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WeiYuan Jia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/MongoDB学习笔记（一）/" itemprop="url">MongoDB学习笔记（一）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T19:58:37+08:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="基本简单操作"><a href="#基本简单操作" class="headerlink" title="基本简单操作"></a>基本简单操作</h5><h6 id="切换数据库"><a href="#切换数据库" class="headerlink" title="切换数据库"></a>切换数据库</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; use [dbname]</span><br><span class="line">switched to db [dbname]</span><br></pre></td></tr></table></figure>
+<h6 id="简单的插入数数据"><a href="#简单的插入数数据" class="headerlink" title="简单的插入数数据"></a>简单的插入数数据</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.insert(&#123;username: <span class="string">"jones"</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span>: 1 &#125;)</span><br><span class="line">&gt; db.users.insert(&#123;username: <span class="string">"smith"</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span>: 1 &#125;)</span><br></pre></td></tr></table></figure>
+<h6 id="现在插入了两个数据，我们用count-方法统计一下"><a href="#现在插入了两个数据，我们用count-方法统计一下" class="headerlink" title="现在插入了两个数据，我们用count()方法统计一下"></a>现在插入了两个数据，我们用<code>count()</code>方法统计一下</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.count()</span><br><span class="line">2</span><br><span class="line">``` </span><br><span class="line"><span class="comment">###### 查询集合中所有的文档</span></span><br><span class="line">``` bash</span><br><span class="line">&gt; db.users.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5beac045b6ca1f382ec12757"</span>), <span class="string">"username"</span>: <span class="string">"jones"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5beac050b6ca1f382ec12758"</span>), <span class="string">"username"</span>: <span class="string">"smith"</span> &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="AND语句"><a href="#AND语句" class="headerlink" title="AND语句"></a>AND语句</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.find(&#123; field1: value1, field2: value2 &#125;)</span><br></pre></td></tr></table></figure>
+<p>或者使用<code>$and</code>操作符<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.find(&#123; <span class="variable">$and</span> : [&#123; field1: value1&#125;, &#123; field2: value2 &#125;]&#125;)</span><br></pre></td></tr></table></figure></p>
+<h6 id="OR语句"><a href="#OR语句" class="headerlink" title="OR语句"></a>OR语句</h6><p>只要把上面的<code>$and</code>操作符改成<code>$or</code>即可<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.find(&#123; <span class="variable">$or</span> : [&#123; field1: value1 &#125;, &#123; field2: value2 &#125;]&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="更新操作"><a href="#更新操作" class="headerlink" title="更新操作"></a>更新操作</h5><h6 id="set"><a href="#set" class="headerlink" title="$set"></a>$set</h6><p>如果jones要增加自己的年龄或者年龄和地区,使用<code>update</code>命令和<code>$set</code>操作符<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;, &#123; <span class="variable">$set</span>: &#123; age : 18 &#125;&#125;)</span><br><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;, &#123; <span class="variable">$set</span>: &#123; age : 18, country : <span class="string">"UK"</span> &#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>注意，如果丢掉操作符，像下面这样，则原来的文档会被替换</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;, &#123; age : 18 &#125;)</span><br></pre></td></tr></table></figure>
+<p>这次操作会导致原来的文档被替换，包括<code>ObjectId</code>也会改变,千万注意避免使用这种方式</p>
+<h6 id="使用-unset来删除文档的某个字段"><a href="#使用-unset来删除文档的某个字段" class="headerlink" title="使用$unset来删除文档的某个字段"></a>使用<code>$unset</code>来删除文档的某个字段</h6><p>我要删除”age : 18”的文档的”username”字段，如下操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; age: 19 &#125;, &#123; <span class="variable">$unset</span>: &#123; username: <span class="string">"这里随便填"</span> &#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="更新复杂数据"><a href="#更新复杂数据" class="headerlink" title="更新复杂数据"></a>更新复杂数据</h5><h6 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h6><p>现在我要在<code>jones</code>的文章中加入他喜欢的城市和水果<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;,</span><br><span class="line">	&#123; </span><br><span class="line">    	<span class="variable">$set</span>: &#123;</span><br><span class="line">        	favorites: &#123;</span><br><span class="line">                   	  cities: [<span class="string">"Hong Kong"</span>, <span class="string">"Shang Hai"</span>],</span><br><span class="line">               		  fruits: [<span class="string">"banane"</span>, <span class="string">"apple"</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h6 id="使用pertty-显示格式化结果"><a href="#使用pertty-显示格式化结果" class="headerlink" title="使用pertty()显示格式化结果"></a>使用<code>pertty()</code>显示格式化结果</h6><p><code>&gt; db.users.find().pretty()</code>可以使用格式显示文档</p>
+<h6 id="使用-push操作符来可以重复添加已有的数据"><a href="#使用-push操作符来可以重复添加已有的数据" class="headerlink" title="使用$push操作符来可以重复添加已有的数据"></a>使用<code>$push</code>操作符来可以重复添加已有的数据</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; <span class="string">"favorites.cities"</span>: <span class="string">"Hong Kong"</span> &#125;,&#123; <span class="variable">$push</span>: &#123; <span class="string">"favorites.cities"</span>: <span class="string">"Hong Kong"</span> &#125;&#125;)</span><br></pre></td></tr></table></figure>
+<p>这段代码输入之后，喜欢<code>Hong Kong</code>的用户的喜爱城市列表里将会多出一个重复的<code>Hong Kong</code>。<br>要想不出现这种后果，就要用到下面的<code>$addToSet</code>操作符了</p>
+<h6 id="使用-addToSet操作符来添加唯一数据"><a href="#使用-addToSet操作符来添加唯一数据" class="headerlink" title="使用$addToSet操作符来添加唯一数据"></a>使用<code>$addToSet</code>操作符来添加唯一数据</h6><h5 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h5><h6 id="使用remove-删除某个文档"><a href="#使用remove-删除某个文档" class="headerlink" title="使用remove()删除某个文档"></a>使用<code>remove()</code>删除某个文档</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.remove(&#123; <span class="string">"favorites.cities"</span>: <span class="string">"Hong Kong"</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p>以上操作会将喜欢城市用户的文档通通删除</p>
+<h6 id="使用remove-删除”users”集合中所有文档-不会删除集合"><a href="#使用remove-删除”users”集合中所有文档-不会删除集合" class="headerlink" title="使用remove()删除”users”集合中所有文档(不会删除集合)"></a>使用<code>remove()</code>删除”users”集合中所有文档(不会删除集合)</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.remove()</span><br></pre></td></tr></table></figure>
+<h5 id="使用drop-删除”users”集合"><a href="#使用drop-删除”users”集合" class="headerlink" title="使用drop()删除”users”集合"></a>使用<code>drop()</code>删除”users”集合</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.drop()</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/10/30/localStorage和sessionStorage/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1588,163 +1727,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/04/15/JSON学习笔记/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WeiYuan Jia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="这是我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/15/JSON学习笔记/" itemprop="url">JSON学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-15T20:57:00+08:00">
-                2018-04-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/JSON/" itemprop="url" rel="index">
-                    <span itemprop="name">JSON</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>首先，给定一个JS对象：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var person=&#123;</span><br><span class="line">	name:<span class="string">"jwy"</span>,</span><br><span class="line">	age:23,</span><br><span class="line">	isStu:<span class="literal">true</span>,</span><br><span class="line">	job:undefined,</span><br><span class="line">	city:[<span class="string">"JiangYin"</span>,<span class="string">"ChangShu"</span>],</span><br><span class="line">	getName:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> this.name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="序列化选项"><a href="#序列化选项" class="headerlink" title="序列化选项"></a>序列化选项</h1><h2 id="早期JSON的解析器-eval"><a href="#早期JSON的解析器-eval" class="headerlink" title="早期JSON的解析器:eval()"></a>早期JSON的解析器:eval()</h2><p>不安全，不推荐使用。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">console.log(<span class="built_in">eval</span>(person));</span><br><span class="line">/*</span><br><span class="line">&#123; name: <span class="string">'jwy'</span>,</span><br><span class="line">  age: 23,</span><br><span class="line">  isStu: <span class="literal">true</span>,</span><br><span class="line">  job: undefined,</span><br><span class="line">  city: [ <span class="string">'JiangYin'</span>, <span class="string">'ChangShu'</span> ],</span><br><span class="line">  getName: [Function: getName] </span><br><span class="line">&#125;  </span><br><span class="line"> */</span><br></pre></td></tr></table></figure></p>
-<p></p>
-<h2 id="标准序列化方法：JSON-stringify-object-filter-indent"><a href="#标准序列化方法：JSON-stringify-object-filter-indent" class="headerlink" title="标准序列化方法：JSON.stringify(object,filter,indent)"></a>标准序列化方法：JSON.stringify(object,filter,indent)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(JSON.stringify(person));</span><br><span class="line">//&#123;<span class="string">"name"</span>:<span class="string">"jwy"</span>,<span class="string">"age"</span>:23,<span class="string">"isStu"</span>:<span class="literal">true</span>,<span class="string">"city"</span>:[<span class="string">"JiangYin"</span>,<span class="string">"ChangShu"</span>]&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果没有函数，是因为JSON序列化时会屏蔽函数。<br>没有输出job，是因为JSON序列化时会屏蔽值为undefined的项。</p>
-<h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><p>filter可以为数组或函数</p>
-<h4 id="1-filter若为数组"><a href="#1-filter若为数组" class="headerlink" title="1.filter若为数组"></a>1.filter若为数组</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var jsonText1=JSON.stringify(person,[<span class="string">"name"</span>,<span class="string">"age"</span>]);</span><br><span class="line">console.log(jsonText1);//&#123;<span class="string">"name"</span>:<span class="string">"jwy"</span>,<span class="string">"age"</span>:23&#125;</span><br></pre></td></tr></table></figure>
-<p>输出了指定数组中的项。</p>
-<h4 id="2-filter若为函数"><a href="#2-filter若为函数" class="headerlink" title="2.filter若为函数"></a>2.filter若为函数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var jsonText2=JSON.stringify(person,<span class="keyword">function</span>(key,value)&#123;</span><br><span class="line">	switch(key)&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"age"</span>:<span class="built_in">return</span> 18</span><br><span class="line">		<span class="keyword">case</span> <span class="string">"isStu"</span>:<span class="built_in">return</span> <span class="literal">false</span></span><br><span class="line">		<span class="keyword">case</span> <span class="string">"city"</span>:<span class="built_in">return</span> value.join(<span class="string">","</span>)</span><br><span class="line">		default:<span class="built_in">return</span> value</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(jsonText2)//&#123;<span class="string">"name"</span>:<span class="string">"jwy"</span>,<span class="string">"age"</span>:18,<span class="string">"isStu"</span>:<span class="literal">false</span>,<span class="string">"city"</span>:<span class="string">"JiangYin,ChangShu"</span>&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="indent"><a href="#indent" class="headerlink" title="indent"></a>indent</h3><p>第三个参数的作用是用来进行缩进，可以指定为字符串或数字*/</p>
-<h4 id="indent为字符串时"><a href="#indent为字符串时" class="headerlink" title="indent为字符串时:"></a>indent为字符串时:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var jsonText3=JSON.stringify(person,null,<span class="string">"----"</span>);</span><br><span class="line">console.log(jsonText3);</span><br><span class="line">/*</span><br><span class="line">&#123;</span><br><span class="line">----<span class="string">"name"</span>: <span class="string">"jwy"</span>,</span><br><span class="line">----<span class="string">"age"</span>: 23,</span><br><span class="line">----<span class="string">"isStu"</span>: <span class="literal">true</span>,</span><br><span class="line">----<span class="string">"city"</span>: [</span><br><span class="line">--------<span class="string">"JiangYin"</span>,</span><br><span class="line">--------<span class="string">"ChangShu"</span></span><br><span class="line">----]</span><br><span class="line">&#125;</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
-<p>可以看到输出结果前面加上了指定的缩进字符，并且自动换行</p>
-<h4 id="indent为数字"><a href="#indent为数字" class="headerlink" title="indent为数字:"></a>indent为数字:</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var jsonText4=JSON.stringify(person,null,4);</span><br><span class="line">console.log(jsonText4);</span><br><span class="line">/*</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"jwy"</span>,</span><br><span class="line">    <span class="string">"age"</span>: 23,</span><br><span class="line">    <span class="string">"isStu"</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">"city"</span>: [</span><br><span class="line">        <span class="string">"JiangYin"</span>,</span><br><span class="line">        <span class="string">"ChangShu"</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出结果的前面自动加上了等同于参数数值大小的缩进空格，并且自动换行。<br><br>第三个参数数值最大为10，即使超过了还是10个。</p>
-<h2 id="关于toString"><a href="#关于toString" class="headerlink" title="关于toString()"></a>关于toString()</h2><p>有时候，JSON.stringify()不能满足对于某些对象的自定义序列化的要求，这时候可以给对象自定义toJSON()方法，返回其自身的JSON数据格式。<br>例如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var book=&#123;</span><br><span class="line">	author:<span class="string">"jwy"</span>,</span><br><span class="line">	name:<span class="string">"JavaScript"</span>,</span><br><span class="line">	toJSON:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> this.author +<span class="string">"'s book is "</span>+this.name;//给对象自定义序列化，！优先执行</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">var bookJSON=JSON.stringify(book,null,10);</span><br><span class="line">//给对象添加toJSON()方法后，使用序列化方法时会优先返回执行toJSON方法返回的值，</span><br><span class="line">console.log(bookJSON)//<span class="string">"jwy author is Javascript"</span></span><br></pre></td></tr></table></figure></p>
-<h1 id="解析选项-JSON-parse"><a href="#解析选项-JSON-parse" class="headerlink" title="解析选项 JSON.parse()"></a>解析选项 JSON.parse()</h1><p>JSON.parse()方法也可以接收替换（过滤）函数作为第二个参数，用于还原，实际上这两个函数的签名是一样的，他们都接收两个参数，一个键和一个值，而且都需要返回一个值。<br>如果还原函数返回defined，则表示要从结果中删除相应的键，如果返回其他值，则讲该值插入到结果中。还原函数经常用在将日期字符串还原成Date对象的时候。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var book1=&#123;</span><br><span class="line">	author:<span class="string">"jwy"</span>,</span><br><span class="line">	name:<span class="string">"JavaScript"</span>,</span><br><span class="line">	rekeaseDate:new Date(2011,11,1),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var book1JSON=JSON.stringify(book,null,4);</span><br><span class="line">console.log(book1JSON);</span><br><span class="line">/*</span><br><span class="line">&#123;</span><br><span class="line">          <span class="string">"author"</span>: <span class="string">"jwy"</span>,</span><br><span class="line">          <span class="string">"name"</span>: <span class="string">"JavaScript"</span>,</span><br><span class="line">          <span class="string">"rekeaseDate"</span>: <span class="string">"2011-11-30T16:00:00.000Z"</span></span><br><span class="line">&#125;</span><br><span class="line"> */</span><br><span class="line">var parseBook1=JSON.parse(book1JSON,<span class="keyword">function</span>(key,value)&#123;</span><br><span class="line">	<span class="keyword">if</span>(key==<span class="string">"rekeaseDate"</span>)&#123;</span><br><span class="line">		<span class="built_in">return</span> new Date(value);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> value;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(parseBook1.rekeaseDate.getFullYear());//2011</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1797,7 +1779,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
