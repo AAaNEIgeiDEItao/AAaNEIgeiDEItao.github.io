@@ -278,7 +278,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T19:58:37+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T19:58:00+08:00">
                 2018-11-13
               </time>
             
@@ -288,6 +288,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/MongoDB/" itemprop="url" rel="index">
+                    <span itemprop="name">MongoDB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -318,27 +340,27 @@
       
         
           
-            <h4 id="基本简单操作"><a href="#基本简单操作" class="headerlink" title="基本简单操作"></a>基本简单操作</h4><h6 id="切换数据库"><a href="#切换数据库" class="headerlink" title="切换数据库"></a>切换数据库</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; use [dbname]</span><br><span class="line">switched to db [dbname]</span><br></pre></td></tr></table></figure>
+            <h5 id="gt-基本简单操作"><a href="#gt-基本简单操作" class="headerlink" title="&gt; 基本简单操作"></a>&gt; 基本简单操作</h5><h6 id="切换数据库"><a href="#切换数据库" class="headerlink" title="切换数据库"></a>切换数据库</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; use [dbname]</span><br><span class="line">switched to db [dbname]</span><br></pre></td></tr></table></figure>
 <h6 id="简单的插入数数据"><a href="#简单的插入数数据" class="headerlink" title="简单的插入数数据"></a>简单的插入数数据</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.insert(&#123;username: <span class="string">"jones"</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span>: 1 &#125;)</span><br><span class="line">&gt; db.users.insert(&#123;username: <span class="string">"smith"</span>&#125;)</span><br><span class="line">WriteResult(&#123; <span class="string">"nInserted"</span>: 1 &#125;)</span><br></pre></td></tr></table></figure>
 <h6 id="现在插入了两个数据，我们用count-方法统计一下"><a href="#现在插入了两个数据，我们用count-方法统计一下" class="headerlink" title="现在插入了两个数据，我们用count()方法统计一下"></a>现在插入了两个数据，我们用<code>count()</code>方法统计一下</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.count()</span><br><span class="line">2</span><br><span class="line">``` </span><br><span class="line"><span class="comment">###### 查询集合中所有的文档</span></span><br><span class="line">``` bash</span><br><span class="line">&gt; db.users.find()</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5beac045b6ca1f382ec12757"</span>), <span class="string">"username"</span>: <span class="string">"jones"</span> &#125;</span><br><span class="line">&#123; <span class="string">"_id"</span> : ObjectId(<span class="string">"5beac050b6ca1f382ec12758"</span>), <span class="string">"username"</span>: <span class="string">"smith"</span> &#125;</span><br></pre></td></tr></table></figure>
 <h6 id="AND语句"><a href="#AND语句" class="headerlink" title="AND语句"></a>AND语句</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.find(&#123; field1: value1, field2: value2 &#125;)</span><br></pre></td></tr></table></figure>
 <p>或者使用<code>$and</code>操作符<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.find(&#123; <span class="variable">$and</span> : [&#123; field1: value1&#125;, &#123; field2: value2 &#125;]&#125;)</span><br></pre></td></tr></table></figure></p>
 <h6 id="OR语句"><a href="#OR语句" class="headerlink" title="OR语句"></a>OR语句</h6><p>只要把上面的<code>$and</code>操作符改成<code>$or</code>即可<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.find(&#123; <span class="variable">$or</span> : [&#123; field1: value1 &#125;, &#123; field2: value2 &#125;]&#125;)</span><br></pre></td></tr></table></figure></p>
-<h4 id="更新操作"><a href="#更新操作" class="headerlink" title="更新操作"></a>更新操作</h4><h6 id="set"><a href="#set" class="headerlink" title="$set"></a>$set</h6><p>如果jones要增加自己的年龄或者年龄和地区,使用<code>update</code>命令和<code>$set</code>操作符<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;, &#123; <span class="variable">$set</span>: &#123; age : 18 &#125;&#125;)</span><br><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;, &#123; <span class="variable">$set</span>: &#123; age : 18, country : <span class="string">"UK"</span> &#125;&#125;)</span><br></pre></td></tr></table></figure></p>
+<h5 id="gt-更新操作"><a href="#gt-更新操作" class="headerlink" title="&gt; 更新操作"></a>&gt; 更新操作</h5><h6 id="set"><a href="#set" class="headerlink" title="$set"></a>$set</h6><p>如果jones要增加自己的年龄或者年龄和地区,使用<code>update</code>命令和<code>$set</code>操作符<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;, &#123; <span class="variable">$set</span>: &#123; age : 18 &#125;&#125;)</span><br><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;, &#123; <span class="variable">$set</span>: &#123; age : 18, country : <span class="string">"UK"</span> &#125;&#125;)</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>注意，如果丢掉操作符，像下面这样，则原来的文档会被替换</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;, &#123; age : 18 &#125;)</span><br></pre></td></tr></table></figure>
 <p>这次操作会导致原来的文档被替换，包括<code>ObjectId</code>也会改变,千万注意避免使用这种方式</p>
 <h6 id="使用-unset来删除文档的某个字段"><a href="#使用-unset来删除文档的某个字段" class="headerlink" title="使用$unset来删除文档的某个字段"></a>使用<code>$unset</code>来删除文档的某个字段</h6><p>我要删除”age : 18”的文档的”username”字段，如下操作<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; age: 19 &#125;, &#123; <span class="variable">$unset</span>: &#123; username: <span class="string">"这里随便填"</span> &#125;&#125;)</span><br></pre></td></tr></table></figure></p>
-<h4 id="更新复杂数据"><a href="#更新复杂数据" class="headerlink" title="更新复杂数据"></a>更新复杂数据</h4><h6 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h6><p>现在我要在<code>jones</code>的文章中加入他喜欢的城市和水果<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;,</span><br><span class="line">	&#123; </span><br><span class="line">    	<span class="variable">$set</span>: &#123;</span><br><span class="line">        	favorites: &#123;</span><br><span class="line">                   	  cities: [<span class="string">"Hong Kong"</span>, <span class="string">"Shang Hai"</span>],</span><br><span class="line">               		  fruits: [<span class="string">"banane"</span>, <span class="string">"apple"</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h5 id="gt-更新复杂数据"><a href="#gt-更新复杂数据" class="headerlink" title="&gt; 更新复杂数据"></a>&gt; 更新复杂数据</h5><h6 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h6><p>现在我要在<code>jones</code>的文章中加入他喜欢的城市和水果<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; username: <span class="string">"jones"</span> &#125;,</span><br><span class="line">	&#123; </span><br><span class="line">    	<span class="variable">$set</span>: &#123;</span><br><span class="line">        	favorites: &#123;</span><br><span class="line">                   	  cities: [<span class="string">"Hong Kong"</span>, <span class="string">"Shang Hai"</span>],</span><br><span class="line">               		  fruits: [<span class="string">"banane"</span>, <span class="string">"apple"</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
 <h6 id="使用pertty-显示格式化结果"><a href="#使用pertty-显示格式化结果" class="headerlink" title="使用pertty()显示格式化结果"></a>使用<code>pertty()</code>显示格式化结果</h6><p><code>&gt; db.users.find().pretty()</code>可以使用格式显示文档</p>
 <h6 id="使用-push操作符来可以重复添加已有的数据"><a href="#使用-push操作符来可以重复添加已有的数据" class="headerlink" title="使用$push操作符来可以重复添加已有的数据"></a>使用<code>$push</code>操作符来可以重复添加已有的数据</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.update(&#123; <span class="string">"favorites.cities"</span>: <span class="string">"Hong Kong"</span> &#125;,&#123; <span class="variable">$push</span>: &#123; <span class="string">"favorites.cities"</span>: <span class="string">"Hong Kong"</span> &#125;&#125;)</span><br></pre></td></tr></table></figure>
 <p>这段代码输入之后，喜欢<code>Hong Kong</code>的用户的喜爱城市列表里将会多出一个重复的<code>Hong Kong</code>。<br>要想不出现这种后果，就要用到下面的<code>$addToSet</code>操作符了</p>
-<h6 id="使用-addToSet操作符来添加唯一数据"><a href="#使用-addToSet操作符来添加唯一数据" class="headerlink" title="使用$addToSet操作符来添加唯一数据"></a>使用<code>$addToSet</code>操作符来添加唯一数据</h6><h4 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h4><h6 id="使用remove-删除某个文档"><a href="#使用remove-删除某个文档" class="headerlink" title="使用remove()删除某个文档"></a>使用<code>remove()</code>删除某个文档</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.remove(&#123; <span class="string">"favorites.cities"</span>: <span class="string">"Hong Kong"</span> &#125;)</span><br></pre></td></tr></table></figure>
+<h6 id="使用-addToSet操作符来添加唯一数据"><a href="#使用-addToSet操作符来添加唯一数据" class="headerlink" title="使用$addToSet操作符来添加唯一数据"></a>使用<code>$addToSet</code>操作符来添加唯一数据</h6><h5 id="gt-删除数据"><a href="#gt-删除数据" class="headerlink" title="&gt; 删除数据"></a>&gt; 删除数据</h5><h6 id="使用remove-删除某个文档"><a href="#使用remove-删除某个文档" class="headerlink" title="使用remove()删除某个文档"></a>使用<code>remove()</code>删除某个文档</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.remove(&#123; <span class="string">"favorites.cities"</span>: <span class="string">"Hong Kong"</span> &#125;)</span><br></pre></td></tr></table></figure>
 <p>以上操作会将喜欢城市用户的文档通通删除</p>
 <h6 id="使用remove-删除”users”集合中所有文档-不会删除集合"><a href="#使用remove-删除”users”集合中所有文档-不会删除集合" class="headerlink" title="使用remove()删除”users”集合中所有文档(不会删除集合)"></a>使用<code>remove()</code>删除”users”集合中所有文档(不会删除集合)</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.remove()</span><br></pre></td></tr></table></figure>
-<h4 id="使用drop-删除”users”集合"><a href="#使用drop-删除”users”集合" class="headerlink" title="使用drop()删除”users”集合"></a>使用<code>drop()</code>删除”users”集合</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.drop()</span><br></pre></td></tr></table></figure>
+<h5 id="gt-使用drop-删除”users”集合"><a href="#gt-使用drop-删除”users”集合" class="headerlink" title="&gt;  使用drop()删除”users”集合"></a>&gt;  使用<code>drop()</code>删除”users”集合</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; db.users.drop()</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1790,7 +1812,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1801,7 +1823,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
