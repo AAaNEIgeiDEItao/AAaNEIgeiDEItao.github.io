@@ -564,6 +564,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/10/28/Ajax封装成Promise/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WeiYuan Jia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/28/Ajax封装成Promise/" itemprop="url">Ajax封装成Promise</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-28T20:50:00+08:00">
+                2018-10-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Ajax/" itemprop="url" rel="index">
+                    <span itemprop="name">Ajax</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> btn = document.getElementById(<span class="string">"btn"</span>);</span><br><span class="line">			<span class="built_in">let</span> demo = document.getElementById(<span class="string">"#demo"</span>);</span><br><span class="line"></span><br><span class="line">			const ajax_post_promise = (url, parameter = &#123;&#125;) =&gt; &#123;</span><br><span class="line">				<span class="built_in">return</span> new Promise(<span class="keyword">function</span>(resolve, reject) &#123;</span><br><span class="line">					<span class="built_in">let</span> xhr = new XMLHttpRequest();</span><br><span class="line">					xhr.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">						<span class="keyword">if</span> (xhr.readyState == 4) &#123;</span><br><span class="line">							<span class="keyword">if</span> ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304) &#123;</span><br><span class="line">								resolve(JSON.parse(xhr.responseText));</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					xhr.open(<span class="string">'post'</span>, url, <span class="literal">true</span>);</span><br><span class="line">					xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>)</span><br><span class="line">					xhr.send(parameter.body);</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line">			const ajax_get_promise = (url, parameter = &#123;&#125;) =&gt; &#123;</span><br><span class="line">				<span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">					<span class="built_in">let</span> xhr = new XMLHttpRequest();</span><br><span class="line">					<span class="built_in">let</span> param = Object.entries(parameter).map((arrItem, index) =&gt; `?<span class="variable">$&#123;arrItem[0]&#125;</span>=<span class="variable">$&#123;arrItem[1]&#125;</span>`);</span><br><span class="line">					</span><br><span class="line">					xhr.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">						<span class="keyword">if</span> (xhr.readyState == 4) &#123;</span><br><span class="line">							<span class="keyword">if</span> ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304) &#123;</span><br><span class="line">								resolve(JSON.parse(xhr.responseText));</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					xhr.open(<span class="string">'get'</span>, url + param, <span class="literal">true</span>);</span><br><span class="line">					xhr.send(null);</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			ajax_post_promise(<span class="string">'http://localhost:3020/users/'</span>)</span><br><span class="line">				.<span class="keyword">then</span>((res) =&gt; console.log(res))</span><br><span class="line">				.catch((err) =&gt; console.log(err));</span><br><span class="line"></span><br><span class="line">			ajax_get_promise((<span class="string">'http://localhost:3020/users/'</span>))</span><br><span class="line">				.<span class="keyword">then</span>((res) =&gt; console.log(res))</span><br><span class="line">				.catch((err) =&gt; console.log(err));</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/06/29/JavaScript-箭头函数this作用域/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1595,160 +1736,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/04/24/Linux-命令4-24/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WeiYuan Jia">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="这是我的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/24/Linux-命令4-24/" itemprop="url">Linux 命令4/24</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-24T15:37:00+08:00">
-                2018-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="useradd"><a href="#useradd" class="headerlink" title="useradd"></a>useradd</h1><h2 id="useradd-options-username"><a href="#useradd-options-username" class="headerlink" title="useradd [options] username"></a>useradd [options] username</h2><h3 id="用于root新建普通用户"><a href="#用于root新建普通用户" class="headerlink" title="用于root新建普通用户"></a>用于root新建普通用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-d dir //设置新账户家目录，与-m连用</span><br><span class="line">-m //创建同名的家目录</span><br></pre></td></tr></table></figure>
-<h1 id="passwd"><a href="#passwd" class="headerlink" title="passwd"></a>passwd</h1><h2 id="passwd-options-username"><a href="#passwd-options-username" class="headerlink" title="passwd [options] [username]"></a>passwd [options] [username]</h2><h3 id="修改用户口令"><a href="#修改用户口令" class="headerlink" title="修改用户口令"></a>修改用户口令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-l //锁定指定账户</span><br><span class="line">-u //解锁指定账户</span><br><span class="line">-S //报告指定账户密码的状态</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">passwd //修改自身口令</span><br><span class="line">sudo passwd zhao //设定zhao的密码</span><br></pre></td></tr></table></figure>
-<h4 id="新用户必须为其设置口令才能激活"><a href="#新用户必须为其设置口令才能激活" class="headerlink" title="新用户必须为其设置口令才能激活"></a>新用户必须为其设置口令才能激活</h4><h1 id="userdel"><a href="#userdel" class="headerlink" title="userdel"></a>userdel</h1><h2 id="userdel-options-username"><a href="#userdel-options-username" class="headerlink" title="userdel [options] username"></a>userdel [options] username</h2><h3 id="用于root删除指定用户"><a href="#用于root删除指定用户" class="headerlink" title="用于root删除指定用户"></a>用于root删除指定用户</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-r //删除主目录和邮件池</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"># su/sudo</span><br><span class="line">## su [-] [username]</span><br><span class="line">### 切换到指定用户username，默认root,&quot;exit&quot;退回到原用户</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>//同时进入新用户环境变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## sudo [-u USER] command</span><br><span class="line">### super do,当前用户以USER（默认root）身份执行命令</span><br></pre></td></tr></table></figure>
-<p>sudo shutdown -h now</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># Ubuntu 激活root</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>sudo passwd root //set password<br>su- //切换至root<br>打开文件<br>/user/share.lightdm/lightdm.conf.d/50-ubuntu.conf<br>添加一行<br>greeter-show-manual-login=true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">重启系统以root 登陆</span><br><span class="line">锁定root：以普通用户登录系统，执行</span><br></pre></td></tr></table></figure></p>
-<p>sudo passwd -l root<br><code>`</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1801,7 +1788,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1812,7 +1799,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1823,7 +1810,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

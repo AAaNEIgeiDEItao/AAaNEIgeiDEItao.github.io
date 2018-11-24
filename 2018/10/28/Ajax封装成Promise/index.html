@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="let,const,var,">
+  <meta name="keywords" content="Promise,Ajax,HTTP,get,post,">
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="块的定义12被&amp;#123;.....&amp;#125;符号包起来的是一个块在函数里面的也是块 新规范有了新的定义变量的两种方式let和const let特点123具有块级作用域临时死区，没有变量提升同一个块级不能提前声明 const特点1234用于声明常量声明之后无法更改，除非是声明的对象，修改其属性或方法具有块级作用域临时死区不能重新声明 新语法之前的var需要借助IIFE来模拟块级作用域:12345">
-<meta name="keywords" content="let,const,var">
+<meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344let btn = document.getElementById(&quot;btn&quot;);			let demo = document.getElementById(&quot;#demo&quot;);			const ajax_post_promise = (url">
+<meta name="keywords" content="Promise,Ajax,HTTP,get,post">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6:let&amp;const">
-<meta property="og:url" content="https://aaaneigeideitao.github.io/2018/05/07/ES6-let-const/index.html">
+<meta property="og:title" content="Ajax封装成Promise">
+<meta property="og:url" content="https://aaaneigeideitao.github.io/2018/10/28/Ajax封装成Promise/index.html">
 <meta property="og:site_name" content="这是我的博客">
-<meta property="og:description" content="块的定义12被&amp;#123;.....&amp;#125;符号包起来的是一个块在函数里面的也是块 新规范有了新的定义变量的两种方式let和const let特点123具有块级作用域临时死区，没有变量提升同一个块级不能提前声明 const特点1234用于声明常量声明之后无法更改，除非是声明的对象，修改其属性或方法具有块级作用域临时死区不能重新声明 新语法之前的var需要借助IIFE来模拟块级作用域:12345">
+<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344let btn = document.getElementById(&quot;btn&quot;);			let demo = document.getElementById(&quot;#demo&quot;);			const ajax_post_promise = (url">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-27T13:57:46.793Z">
+<meta property="og:updated_time" content="2018-11-24T06:10:44.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6:let&amp;const">
-<meta name="twitter:description" content="块的定义12被&amp;#123;.....&amp;#125;符号包起来的是一个块在函数里面的也是块 新规范有了新的定义变量的两种方式let和const let特点123具有块级作用域临时死区，没有变量提升同一个块级不能提前声明 const特点1234用于声明常量声明之后无法更改，除非是声明的对象，修改其属性或方法具有块级作用域临时死区不能重新声明 新语法之前的var需要借助IIFE来模拟块级作用域:12345">
+<meta name="twitter:title" content="Ajax封装成Promise">
+<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344let btn = document.getElementById(&quot;btn&quot;);			let demo = document.getElementById(&quot;#demo&quot;);			const ajax_post_promise = (url">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://aaaneigeideitao.github.io/2018/05/07/ES6-let-const/">
+  <link rel="canonical" href="https://aaaneigeideitao.github.io/2018/10/28/Ajax封装成Promise/">
 
 
 
 
 
-  <title>ES6:let&const | 这是我的博客</title>
+  <title>Ajax封装成Promise | 这是我的博客</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/05/07/ES6-let-const/">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/10/28/Ajax封装成Promise/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WeiYuan Jia">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ES6:let&const</h1>
+          <h1 class="post-title" itemprop="name headline">Ajax封装成Promise</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T13:05:39+08:00">
-                2018-05-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-28T20:50:00+08:00">
+                2018-10-28
               </time>
             
 
@@ -303,8 +303,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Ajax/" itemprop="url" rel="index">
+                    <span itemprop="name">Ajax</span>
                   </a>
                 </span>
 
@@ -340,15 +340,7 @@
       
 
       
-        <h1 id="块的定义"><a href="#块的定义" class="headerlink" title="块的定义"></a>块的定义</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">被&#123;.....&#125;符号包起来的是一个块</span><br><span class="line">在函数里面的也是块</span><br></pre></td></tr></table></figure>
-<p>新规范有了新的定义变量的两种方式let和const</p>
-<h1 id="let特点"><a href="#let特点" class="headerlink" title="let特点"></a>let特点</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">具有块级作用域</span><br><span class="line">临时死区，没有变量提升</span><br><span class="line">同一个块级不能提前声明</span><br></pre></td></tr></table></figure>
-<h1 id="const特点"><a href="#const特点" class="headerlink" title="const特点"></a>const特点</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用于声明常量声明之后无法更改，除非是声明的对象，修改其属性或方法</span><br><span class="line">具有块级作用域</span><br><span class="line">临时死区</span><br><span class="line">不能重新声明</span><br></pre></td></tr></table></figure>
-<h1 id="新语法之前的var"><a href="#新语法之前的var" class="headerlink" title="新语法之前的var"></a>新语法之前的var</h1><p>需要借助IIFE来模拟块级作用域:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i=0;i&lt;5;i++)&#123;</span><br><span class="line">	(<span class="keyword">function</span>(i)&#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="title">function</span></span>()&#123;console.log(i)&#125;,1000);</span><br><span class="line">	&#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>现在可以直接用let来代替之前的方式<br>也适用于for…in和for…of<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i=0;i&lt;5;i++)&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="title">function</span></span>()&#123;console.log(i)&#125;,1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="全局作用域下的声明"><a href="#全局作用域下的声明" class="headerlink" title="全局作用域下的声明"></a>全局作用域下的声明</h1><h4 id="var"><a href="#var" class="headerlink" title="var"></a>var</h4><p>在全局作用域下使用var声明的变量，会被自动添加为window的成员，可能会覆盖原有属性</p>
-<h4 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h4><p>在全局作用域下使用let或const声明的变量不会成为window的成员，而会创造一个新的绑定</p>
-
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> btn = document.getElementById(<span class="string">"btn"</span>);</span><br><span class="line">			<span class="built_in">let</span> demo = document.getElementById(<span class="string">"#demo"</span>);</span><br><span class="line"></span><br><span class="line">			const ajax_post_promise = (url, parameter = &#123;&#125;) =&gt; &#123;</span><br><span class="line">				<span class="built_in">return</span> new Promise(<span class="keyword">function</span>(resolve, reject) &#123;</span><br><span class="line">					<span class="built_in">let</span> xhr = new XMLHttpRequest();</span><br><span class="line">					xhr.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">						<span class="keyword">if</span> (xhr.readyState == 4) &#123;</span><br><span class="line">							<span class="keyword">if</span> ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304) &#123;</span><br><span class="line">								resolve(JSON.parse(xhr.responseText));</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					xhr.open(<span class="string">'post'</span>, url, <span class="literal">true</span>);</span><br><span class="line">					xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>)</span><br><span class="line">					xhr.send(parameter.body);</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line">			const ajax_get_promise = (url, parameter = &#123;&#125;) =&gt; &#123;</span><br><span class="line">				<span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">					<span class="built_in">let</span> xhr = new XMLHttpRequest();</span><br><span class="line">					<span class="built_in">let</span> param = Object.entries(parameter).map((arrItem, index) =&gt; `?<span class="variable">$&#123;arrItem[0]&#125;</span>=<span class="variable">$&#123;arrItem[1]&#125;</span>`);</span><br><span class="line">					</span><br><span class="line">					xhr.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">						<span class="keyword">if</span> (xhr.readyState == 4) &#123;</span><br><span class="line">							<span class="keyword">if</span> ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304) &#123;</span><br><span class="line">								resolve(JSON.parse(xhr.responseText));</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					xhr.open(<span class="string">'get'</span>, url + param, <span class="literal">true</span>);</span><br><span class="line">					xhr.send(null);</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			ajax_post_promise(<span class="string">'http://localhost:3020/users/'</span>)</span><br><span class="line">				.<span class="keyword">then</span>((res) =&gt; console.log(res))</span><br><span class="line">				.catch((err) =&gt; console.log(err));</span><br><span class="line"></span><br><span class="line">			ajax_get_promise((<span class="string">'http://localhost:3020/users/'</span>))</span><br><span class="line">				.<span class="keyword">then</span>((res) =&gt; console.log(res))</span><br><span class="line">				.catch((err) =&gt; console.log(err));</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -365,11 +357,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/let/" rel="tag"># let</a>
+            <a href="/tags/Promise/" rel="tag"># Promise</a>
           
-            <a href="/tags/const/" rel="tag"># const</a>
+            <a href="/tags/Ajax/" rel="tag"># Ajax</a>
           
-            <a href="/tags/var/" rel="tag"># var</a>
+            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
+          
+            <a href="/tags/get/" rel="tag"># get</a>
+          
+            <a href="/tags/post/" rel="tag"># post</a>
           
         </div>
       
@@ -382,8 +378,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/27/JavaScript设计模式：Module模式-1/" rel="next" title="JavaScript设计模式：模块模式">
-                <i class="fa fa-chevron-left"></i> JavaScript设计模式：模块模式
+              <a href="/2018/06/29/JavaScript-箭头函数this作用域/" rel="next" title="JavaScript-this指向正常的几种写法">
+                <i class="fa fa-chevron-left"></i> JavaScript-this指向正常的几种写法
               </a>
             
           </div>
@@ -392,8 +388,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/08/LINUX-5-8/" rel="prev" title="LINUX 5/8">
-                LINUX 5/8 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/30/localStorage和sessionStorage/" rel="prev" title="localStorage和sessionStorage">
+                localStorage和sessionStorage <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -446,17 +442,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -534,22 +521,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#块的定义"><span class="nav-number">1.</span> <span class="nav-text">块的定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#let特点"><span class="nav-number">2.</span> <span class="nav-text">let特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#const特点"><span class="nav-number">3.</span> <span class="nav-text">const特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新语法之前的var"><span class="nav-number">4.</span> <span class="nav-text">新语法之前的var</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全局作用域下的声明"><span class="nav-number">5.</span> <span class="nav-text">全局作用域下的声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#var"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#let和const"><span class="nav-number">5.0.0.2.</span> <span class="nav-text">let和const</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
