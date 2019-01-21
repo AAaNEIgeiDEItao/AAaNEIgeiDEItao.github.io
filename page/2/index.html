@@ -247,6 +247,452 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/05/08/LINUX-5-8/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WeiYuan Jia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/08/LINUX-5-8/" itemprop="url">LINUX 5/8</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-08T15:42:45+08:00">
+                2018-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="文件名通配符"><a href="#文件名通配符" class="headerlink" title="文件名通配符"></a>文件名通配符</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">* 匹配任意字符</span><br><span class="line">?匹配任意一个字符</span><br><span class="line">[] 与方括号中字符之一匹配</span><br><span class="line">[字符1，字符2，...] &quot;,&quot;指定多个匹配字符</span><br><span class="line">[开始字符-结束字符] &quot;-&quot;指定匹配字符范围</span><br><span class="line">[!字符] &quot;!&quot;指定不匹配字符</span><br></pre></td></tr></table></figure>
+<p>例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">zip* </span><br><span class="line">*.c</span><br><span class="line">rc?.d</span><br><span class="line">[a-d,x,y]</span><br><span class="line">[a-f]*</span><br><span class="line">[!z] 文件名不是z的单个字符</span><br><span class="line">*[!o] 不以o结尾的任意字符串</span><br></pre></td></tr></table></figure>
+<h2 id="标准文件"><a href="#标准文件" class="headerlink" title="标准文件"></a>标准文件</h2><h4 id="stdin-标准输入，键盘"><a href="#stdin-标准输入，键盘" class="headerlink" title="stdin 标准输入，键盘"></a>stdin 标准输入，键盘</h4><h4 id="stdout-标准输出，显示器"><a href="#stdout-标准输出，显示器" class="headerlink" title="stdout 标准输出，显示器"></a>stdout 标准输出，显示器</h4><h4 id="stderr-标准错误输出"><a href="#stderr-标准错误输出" class="headerlink" title="stderr 标准错误输出"></a>stderr 标准错误输出</h4><h3 id="标准输入重定向-lt"><a href="#标准输入重定向-lt" class="headerlink" title="标准输入重定向 &lt;"></a>标准输入重定向 &lt;</h3><p>cat &lt; file<br>打开文件，然后显示在显示器上</p>
+<h3 id="标准输出-追加-重定向-gt-gt-gt"><a href="#标准输出-追加-重定向-gt-gt-gt" class="headerlink" title="标准输出(追加)重定向 &gt;  &gt;&gt;"></a>标准输出(追加)重定向 &gt;  &gt;&gt;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; file 把键盘流写入file，Ctrl+D</span><br><span class="line">cat &gt;&gt; file //追加</span><br><span class="line">cat file1 &gt;&gt;file2 // </span><br><span class="line">cat file1 file2 &gt;file3 // 合并file1和file2的内容写到file3</span><br><span class="line">echo &quot;Hello world!&quot; &gt;&gt; file // </span><br><span class="line">wc -l &lt; file1 &gt; file2</span><br></pre></td></tr></table></figure>
+<h3 id="标准错误输出重定向-2-gt"><a href="#标准错误输出重定向-2-gt" class="headerlink" title="标准错误输出重定向 2&gt;"></a>标准错误输出重定向 2&gt;</h3><h2 id="管道线-pipe-line"><a href="#管道线-pipe-line" class="headerlink" title="管道线 (pipe line)"></a>管道线 (pipe line)</h2><p>命令1|命令2..．　管道线<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ls | wc -l // 显示文件数量</span><br><span class="line">who | grep lzd //查看lzd是否登入</span><br><span class="line">ls /etc | sort -r | more //列出/etc下的文件然后逆序排序然后分屏显示</span><br></pre></td></tr></table></figure></p>
+<h3 id="T型管道"><a href="#T型管道" class="headerlink" title="T型管道"></a>T型管道</h3><h4 id="命令1-tee-file-命令2"><a href="#命令1-tee-file-命令2" class="headerlink" title="命令1|tee file|命令2"></a>命令1|tee file|命令2</h4><p>命令1的标准输出先存到file里面再作为命令2的标准输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find -name &quot;h*&quot; | tee save | wc -l //</span><br></pre></td></tr></table></figure></p>
+<h2 id="命令执行逻辑符"><a href="#命令执行逻辑符" class="headerlink" title="命令执行逻辑符"></a>命令执行逻辑符</h2><h3 id="amp-amp"><a href="#amp-amp" class="headerlink" title="&amp;&amp;"></a>&amp;&amp;</h3><h4 id="格式：-command-amp-amp-command2-amp-amp-…"><a href="#格式：-command-amp-amp-command2-amp-amp-…" class="headerlink" title="格式： command &amp;&amp; command2 &amp;&amp;…"></a>格式： command &amp;&amp; command2 &amp;&amp;…</h4><h4 id="功能：依次执行各个命令，直到某个命令失败为止"><a href="#功能：依次执行各个命令，直到某个命令失败为止" class="headerlink" title="功能：依次执行各个命令，直到某个命令失败为止"></a>功能：依次执行各个命令，直到某个命令失败为止</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test -d /home/jwy &amp;&amp; echo &quot;dir exists&quot; </span><br><span class="line">//测试目录是否存在，如存在显示dir exists</span><br></pre></td></tr></table></figure>
+<h3 id="逻辑或"><a href="#逻辑或" class="headerlink" title="逻辑或 ||"></a>逻辑或 ||</h3><h4 id="格式：command1-command2-…"><a href="#格式：command1-command2-…" class="headerlink" title="格式：command1||command2||…"></a>格式：command1||command2||…</h4><h4 id="功能：依次执行各个命令，直到某个命令成功为止"><a href="#功能：依次执行各个命令，直到某个命令成功为止" class="headerlink" title="功能：依次执行各个命令，直到某个命令成功为止"></a>功能：依次执行各个命令，直到某个命令成功为止</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test -d /home/jwy ||echo &quot;dir no exists&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="命令替换符和转义符"><a href="#命令替换符和转义符" class="headerlink" title="命令替换符和转义符"></a>命令替换符和转义符</h2><h3 id="command-或-command"><a href="#command-或-command" class="headerlink" title="command 或 $(command)"></a><code>command</code> 或 <code>$(command)</code></h3><h3 id="引用命令的执行结果"><a href="#引用命令的执行结果" class="headerlink" title="引用命令的执行结果"></a>引用命令的执行结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo Today is `date`</span><br><span class="line">echo Today is $(date)</span><br></pre></td></tr></table></figure>
+<h3 id="转义符：-消除-后元字符特殊含义，鸳鸯输出"><a href="#转义符：-消除-后元字符特殊含义，鸳鸯输出" class="headerlink" title="转义符： 消除\后元字符特殊含义，鸳鸯输出"></a>转义符： 消除\后元字符特殊含义，鸳鸯输出</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $PATH</span><br><span class="line">echo \$PATH</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/05/07/ES6-let-const/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WeiYuan Jia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/07/ES6-let-const/" itemprop="url">ES6:let&const</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-07T13:05:39+08:00">
+                2018-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="块的定义"><a href="#块的定义" class="headerlink" title="块的定义"></a>块的定义</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">被&#123;.....&#125;符号包起来的是一个块</span><br><span class="line">在函数里面的也是块</span><br></pre></td></tr></table></figure>
+<p>新规范有了新的定义变量的两种方式let和const</p>
+<h1 id="let特点"><a href="#let特点" class="headerlink" title="let特点"></a>let特点</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">具有块级作用域</span><br><span class="line">临时死区，没有变量提升</span><br><span class="line">同一个块级不能提前声明</span><br></pre></td></tr></table></figure>
+<h1 id="const特点"><a href="#const特点" class="headerlink" title="const特点"></a>const特点</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用于声明常量声明之后无法更改，除非是声明的对象，修改其属性或方法</span><br><span class="line">具有块级作用域</span><br><span class="line">临时死区</span><br><span class="line">不能重新声明</span><br></pre></td></tr></table></figure>
+<h1 id="新语法之前的var"><a href="#新语法之前的var" class="headerlink" title="新语法之前的var"></a>新语法之前的var</h1><p>需要借助IIFE来模拟块级作用域:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(var i=0;i&lt;5;i++)&#123;</span><br><span class="line">	(<span class="keyword">function</span>(i)&#123;</span><br><span class="line">		setTimeout(<span class="function"><span class="title">function</span></span>()&#123;console.log(i)&#125;,1000);</span><br><span class="line">	&#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在可以直接用let来代替之前的方式<br>也适用于for…in和for…of<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i=0;i&lt;5;i++)&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="title">function</span></span>()&#123;console.log(i)&#125;,1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="全局作用域下的声明"><a href="#全局作用域下的声明" class="headerlink" title="全局作用域下的声明"></a>全局作用域下的声明</h1><h4 id="var"><a href="#var" class="headerlink" title="var"></a>var</h4><p>在全局作用域下使用var声明的变量，会被自动添加为window的成员，可能会覆盖原有属性</p>
+<h4 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h4><p>在全局作用域下使用let或const声明的变量不会成为window的成员，而会创造一个新的绑定</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/04/27/JavaScript设计模式：Module模式-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WeiYuan Jia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/27/JavaScript设计模式：Module模式-1/" itemprop="url">JavaScript设计模式：模块模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-27T14:12:00+08:00">
+                2018-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="模块模式"><a href="#模块模式" class="headerlink" title="模块模式"></a>模块模式</h1><h4 id="模块是任何强大应用程序架构中不可或缺的一部分，它可以帮助我们清晰的分离和组织项目中的代码单元"><a href="#模块是任何强大应用程序架构中不可或缺的一部分，它可以帮助我们清晰的分离和组织项目中的代码单元" class="headerlink" title="模块是任何强大应用程序架构中不可或缺的一部分，它可以帮助我们清晰的分离和组织项目中的代码单元"></a>模块是任何强大应用程序架构中不可或缺的一部分，它可以帮助我们清晰的分离和组织项目中的代码单元</h4><h4 id="在JavaScript中，有几种实现模块的方法，包括"><a href="#在JavaScript中，有几种实现模块的方法，包括" class="headerlink" title="在JavaScript中，有几种实现模块的方法，包括"></a>在JavaScript中，有几种实现模块的方法，包括</h4><h5 id="·对象字面量表示法"><a href="#·对象字面量表示法" class="headerlink" title="·对象字面量表示法"></a>·对象字面量表示法</h5><h5 id="·Module模块"><a href="#·Module模块" class="headerlink" title="·Module模块"></a>·Module模块</h5><h5 id="·AMD模块"><a href="#·AMD模块" class="headerlink" title="·AMD模块"></a>·AMD模块</h5><h5 id="·CommonJS模块"><a href="#·CommonJS模块" class="headerlink" title="·CommonJS模块"></a>·CommonJS模块</h5><h5 id="·ECMAScript6模块"><a href="#·ECMAScript6模块" class="headerlink" title="·ECMAScript6模块"></a>·ECMAScript6模块</h5><h3 id="对象字面量模块"><a href="#对象字面量模块" class="headerlink" title="对象字面量模块"></a>对象字面量模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var userModule=&#123;</span><br><span class="line">	name:<span class="string">"admin"</span>,</span><br><span class="line">	userConfig:&#123;</span><br><span class="line">		LANGUAGE:<span class="string">"en"</span>,</span><br><span class="line">		ROOT:<span class="literal">true</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="function"><span class="title">banner</span></span>()&#123;</span><br><span class="line">		console.log(<span class="string">"Hello "</span>+this.name+<span class="string">"!"</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="function"><span class="title">showConfig</span></span>()&#123;</span><br><span class="line">		console.log(<span class="string">"LANGUAGE:"</span>+this.userConfig.LANGUAGE+<span class="string">"\n"</span>+<span class="string">"ROOT:"</span>+((this.userConfig.root)?<span class="string">"enabled"</span>:<span class="string">"disabled"</span>));</span><br><span class="line"></span><br><span class="line">	&#125;,</span><br><span class="line">	resetConfig(newConfig)&#123;</span><br><span class="line">		<span class="keyword">if</span>(typeof newConfig===<span class="string">"object"</span>)&#123;</span><br><span class="line">			this.userConfig=newConfig;</span><br><span class="line">			console.log(<span class="string">"set config success!"</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123; </span><br><span class="line">			console.log(<span class="string">"set config failed!"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">userModule.banner();//Hello admin!</span><br><span class="line">userModule.showConfig();</span><br><span class="line">/*</span><br><span class="line">	LANGUAGE:en</span><br><span class="line">	root:disabled</span><br><span class="line">*/</span><br><span class="line">userModule.resetConfig(&#123;</span><br><span class="line">	LANGUAGE:<span class="string">"ch"</span>,</span><br><span class="line">	root:<span class="literal">false</span></span><br><span class="line">&#125;);//<span class="built_in">set</span> config success!</span><br><span class="line">userModule.resetConfig(<span class="string">"no"</span>);//<span class="built_in">set</span> config failed!</span><br><span class="line">userModule.showConfig();</span><br><span class="line">/*</span><br><span class="line">LANGUAGE:ch</span><br><span class="line">ROOT:disabled</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+<h3 id="Module模块"><a href="#Module模块" class="headerlink" title="Module模块"></a>Module模块</h3><p>Module模式最初被定义为一种在传统软件工程中为类提供私有和公有封装的方法。<br>在JavaScript中，Module模式用于进一步模拟类的概念，通过这种方式，能够使一个单独的对象拥有共有/私有方法和变量，从而屏蔽来自全局作用域的特殊部分。这样使得函数名与页面上其他脚本定义的函数冲突可能性降低。</p>
+<h4 id="特点：私有"><a href="#特点：私有" class="headerlink" title="特点：私有"></a>特点：私有</h4><p>Module模式使用闭包封装“私有”状态和组织。它提供了一种包装混合共有/私有方法和变量的方式，防止其泄露至全局作用域，减少冲突。通过该模式，旺旺只要返回一个公有API，而其他的一切则都维持在私有闭包里。<br>该模式利用IIFE返回一个对象。<br>在JavaScript中没意义真正意义上的“私有”，不像Java等传统语言，JavaScript没有访问修饰符，私有的实质是利用函数作用域模拟了私有的概念。在Module模式中，由于闭包的存在，声明的变量和方法只在该模式内部可用。但在返回对象上定义的变量和方法，则对外部使用者都是可用的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var myModule=(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	var privateName=<span class="string">"jwy"</span>;</span><br><span class="line">	<span class="built_in">return</span> &#123;</span><br><span class="line">		publicAge:22,</span><br><span class="line">		setName(name)&#123;</span><br><span class="line">			privateName=name;</span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="function"><span class="title">getName</span></span>()&#123;</span><br><span class="line">			console.log(privateName);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line">myModule.getName();//<span class="string">"jwy"</span></span><br><span class="line">myModule.setName(<span class="string">"zq"</span>);</span><br><span class="line">myModule.getName();//<span class="string">"zq"</span></span><br><span class="line">console.log(myModule.privateName);//undefined</span><br><span class="line">console.log(myModule.publicAge);//22</span><br></pre></td></tr></table></figure></p>
+<p>可以看到我在立即调用函数内部定义了privateName变量，然后返回了一个包含两个方法和一个属性的对象，将返回值赋给顶层作用域的变量名myModule，通过这两个方法可以对函数作用域内部的privateName进行操作，但是却不能直接利用点表示法“myModule.privateName”访问这个属性，这就像私有变量，因为privateName的存在被局限在了模块的闭包内，因此只能通过返回的对象的两个方法对其操作。而返回对象的属性则可以通过点表示法“myModule.publicAge”直接读取，而它是作为公有变量的存在。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/04/24/Linux-命令4-24/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1192,7 +1638,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1203,7 +1649,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1214,7 +1660,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -1267,7 +1713,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

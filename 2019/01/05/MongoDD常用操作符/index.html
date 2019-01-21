@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next gemini" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="MongoDB,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="查询、投影比较操作符$eq匹配等于指定值的值。 $gt匹配大于指定值的值。 $gte匹配大于或等于指定值的值。 $in匹配数组中指定的任何值。 $lt匹配小于指定值的值。 $lte匹配小于或等于指定值的值。 $ne匹配所有不等于指定值的值。 $nin匹配数组中指定的值。 逻辑操作符$and使用逻辑连接查询子句AND将返回与两个子句的条件匹配的所有文档。 $not反转查询表达式的效果并返回与查询表达">
+<meta name="keywords" content="MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDD查询、投影、更新操作符">
+<meta property="og:url" content="https://aaaneigeideitao.github.io/2019/01/05/MongoDD常用操作符/index.html">
+<meta property="og:site_name" content="这是我的博客">
+<meta property="og:description" content="查询、投影比较操作符$eq匹配等于指定值的值。 $gt匹配大于指定值的值。 $gte匹配大于或等于指定值的值。 $in匹配数组中指定的任何值。 $lt匹配小于指定值的值。 $lte匹配小于或等于指定值的值。 $ne匹配所有不等于指定值的值。 $nin匹配数组中指定的值。 逻辑操作符$and使用逻辑连接查询子句AND将返回与两个子句的条件匹配的所有文档。 $not反转查询表达式的效果并返回与查询表达">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-05T16:44:11.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDD查询、投影、更新操作符">
+<meta name="twitter:description" content="查询、投影比较操作符$eq匹配等于指定值的值。 $gt匹配大于指定值的值。 $gte匹配大于或等于指定值的值。 $in匹配数组中指定的任何值。 $lt匹配小于指定值的值。 $lte匹配小于或等于指定值的值。 $ne匹配所有不等于指定值的值。 $nin匹配数组中指定的值。 逻辑操作符$and使用逻辑连接查询子句AND将返回与两个子句的条件匹配的所有文档。 $not反转查询表达式的效果并返回与查询表达">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: false,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://aaaneigeideitao.github.io/2019/01/05/MongoDD常用操作符/">
+
+
+
+
+
+  <title>MongoDD查询、投影、更新操作符 | 这是我的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">这是我的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不会就钻，再不会就问，再再不会就转行吧。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2019/01/05/MongoDD常用操作符/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="WeiYuan Jia">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这是我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MongoDD查询、投影、更新操作符</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-05T23:13:00+08:00">
+                2019-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/M-o-n-go-DB/" itemprop="url" rel="index">
+                    <span itemprop="name">M o n go DB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="查询、投影"><a href="#查询、投影" class="headerlink" title="查询、投影"></a>查询、投影</h3><h4 id="比较操作符"><a href="#比较操作符" class="headerlink" title="比较操作符"></a>比较操作符</h4><h5 id="eq"><a href="#eq" class="headerlink" title="$eq"></a><code>$eq</code></h5><p>匹配等于指定值的值。</p>
+<h5 id="gt"><a href="#gt" class="headerlink" title="$gt"></a><code>$gt</code></h5><p>匹配大于指定值的值。</p>
+<h5 id="gte"><a href="#gte" class="headerlink" title="$gte"></a><code>$gte</code></h5><p>匹配大于或等于指定值的值。</p>
+<h5 id="in"><a href="#in" class="headerlink" title="$in"></a><code>$in</code></h5><p>匹配数组中指定的任何值。</p>
+<h5 id="lt"><a href="#lt" class="headerlink" title="$lt"></a><code>$lt</code></h5><p>匹配小于指定值的值。</p>
+<h5 id="lte"><a href="#lte" class="headerlink" title="$lte"></a><code>$lte</code></h5><p>匹配小于或等于指定值的值。</p>
+<h5 id="ne"><a href="#ne" class="headerlink" title="$ne"></a><code>$ne</code></h5><p>匹配所有不等于指定值的值。</p>
+<h5 id="nin"><a href="#nin" class="headerlink" title="$nin"></a><code>$nin</code></h5><p>匹配数组中指定的值。</p>
+<h4 id="逻辑操作符"><a href="#逻辑操作符" class="headerlink" title="逻辑操作符"></a>逻辑操作符</h4><h5 id="and"><a href="#and" class="headerlink" title="$and"></a><code>$and</code></h5><p>使用逻辑连接查询子句AND将返回与两个子句的条件匹配的所有文档。</p>
+<h5 id="not"><a href="#not" class="headerlink" title="$not"></a><code>$not</code></h5><p>反转查询表达式的效果并返回与查询表达式不匹配的文档。</p>
+<h5 id="nor"><a href="#nor" class="headerlink" title="$nor"></a><code>$nor</code></h5><p>使用逻辑连接查询子句NOR将返回所有无法匹配两个子句的文档。</p>
+<h5 id="or"><a href="#or" class="headerlink" title="$or"></a><code>$or</code></h5><p>使用逻辑连接查询子句OR将返回与任一子句的条件匹配的所有文档。</p>
+<h4 id="元素操作符"><a href="#元素操作符" class="headerlink" title="元素操作符"></a>元素操作符</h4><h5 id="exists"><a href="#exists" class="headerlink" title="$exists"></a><code>$exists</code></h5><p>匹配具有指定字段的文档。</p>
+<h5 id="type"><a href="#type" class="headerlink" title="$type"></a><code>$type</code></h5><p>如果字段是指定类型，则选择文档。</p>
+<h4 id="值操作符"><a href="#值操作符" class="headerlink" title="值操作符"></a>值操作符</h4><h5 id="expr"><a href="#expr" class="headerlink" title="$expr"></a><code>$expr</code></h5><p>允许在查询语言中使用聚合表达式。</p>
+<h5 id="jsonSchema"><a href="#jsonSchema" class="headerlink" title="$jsonSchema"></a><code>$jsonSchema</code></h5><p>根据给定的JSON模式验证文档。</p>
+<h5 id="mod"><a href="#mod" class="headerlink" title="$mod"></a><code>$mod</code></h5><p>对字段的值执行模运算，并选择具有指定结果的文档。</p>
+<h5 id="regex"><a href="#regex" class="headerlink" title="$regex"></a><code>$regex</code></h5><p>选择值与指定正则表达式匹配的文档。</p>
+<h5 id="text"><a href="#text" class="headerlink" title="$text"></a><code>$text</code></h5><p>执行文本搜索。</p>
+<h5 id="where"><a href="#where" class="headerlink" title="$where"></a><code>$where</code></h5><p>匹配满足JavaScript表达式的文档。</p>
+<h4 id="数组操作符"><a href="#数组操作符" class="headerlink" title="数组操作符"></a>数组操作符</h4><h5 id="all"><a href="#all" class="headerlink" title="$all"></a><code>$all</code></h5><p>匹配包含查询中指定的所有元素的数组。</p>
+<h5 id="elemMatch"><a href="#elemMatch" class="headerlink" title="$elemMatch"></a><code>$elemMatch</code></h5><p>如果数组字段中的元素与所有指定$elemMatch条件匹配，则选择文档。</p>
+<h5 id="size"><a href="#size" class="headerlink" title="$size"></a><code>$size</code></h5><p>如果数组字段是指定大小，则选择文档。</p>
+<h4 id="评论操作符"><a href="#评论操作符" class="headerlink" title="评论操作符"></a>评论操作符</h4><h5 id="comment"><a href="#comment" class="headerlink" title="$comment"></a><code>$comment</code></h5><p>向查询谓词添加注释。</p>
+<h4 id="投影操作符"><a href="#投影操作符" class="headerlink" title="投影操作符"></a>投影操作符</h4><h5 id=""><a href="#" class="headerlink" title="$"></a><code>$</code></h5><p>投影数组中与查询条件匹配的第一个元素。</p>
+<h5 id="elemMatch-1"><a href="#elemMatch-1" class="headerlink" title="$elemMatch"></a><code>$elemMatch</code></h5><p>投影数组中与指定$elemMatch条件匹配的第一个元素。</p>
+<h5 id="meta"><a href="#meta" class="headerlink" title="$meta"></a><code>$meta</code></h5><p>投影在$text操作期间分配的文档分数。</p>
+<h5 id="slice"><a href="#slice" class="headerlink" title="$slice"></a><code>$slice</code></h5><p>限制从数组投射的元素数量。支持跳过和限制切片。</p>
+<h4 id="按位操作符"><a href="#按位操作符" class="headerlink" title="按位操作符"></a>按位操作符</h4><h5 id="bitsAllClear"><a href="#bitsAllClear" class="headerlink" title="$bitsAllClear"></a><code>$bitsAllClear</code></h5><p>匹配数值或二进制值，其中一组位位置都具有值0。</p>
+<h5 id="bitsAllSet"><a href="#bitsAllSet" class="headerlink" title="$bitsAllSet"></a><code>$bitsAllSet</code></h5><p>匹配数值或二进制值，其中一组位位置都具有值1。</p>
+<h5 id="bitsAnyClear"><a href="#bitsAnyClear" class="headerlink" title="$bitsAnyClear"></a><code>$bitsAnyClear</code></h5><p>匹配数值或二进制值，其中来自一组位位置的任何位的值都为0。</p>
+<h5 id="bitsAnySet"><a href="#bitsAnySet" class="headerlink" title="$bitsAnySet"></a><code>$bitsAnySet</code></h5><p>匹配数值或二进制值，其中来自一组位位置的任何位的值都为1。</p>
+<h4 id="地理空间操作符"><a href="#地理空间操作符" class="headerlink" title="地理空间操作符"></a>地理空间操作符</h4><h5 id="geoIntersects"><a href="#geoIntersects" class="headerlink" title="$geoIntersects"></a>$geoIntersects</h5><p>选择与GeoJSON几何体相交的几何。该2dsphere索引支持 <code>$geoIntersects</code>。</p>
+<h5 id="geoWithin"><a href="#geoWithin" class="headerlink" title="$geoWithin"></a><code>$geoWithin</code></h5><p>选择边界GeoJSON几何体中的几何。该2dsphere和2D索引支持 <code>$geoWithin</code>。</p>
+<h5 id="near"><a href="#near" class="headerlink" title="$near"></a><code>$near</code></h5><p>返回点附近的地理空间对象。需要地理空间索引。该2dsphere和2D索引支持<code>$near</code>。</p>
+<h5 id="nearSphere"><a href="#nearSphere" class="headerlink" title="$nearSphere"></a><code>$nearSphere</code></h5><p>返回球体上某点附近的地理空间对象。需要地理空间索引。该2dsphere和2D索引支持 <code>$nearSphere</code>。</p>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><h4 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h4><h5 id="currentDate"><a href="#currentDate" class="headerlink" title="$currentDate"></a><code>$currentDate</code></h5><p>将字段的值设置为当前日期，可以是Date或Timestamp。</p>
+<h5 id="inc"><a href="#inc" class="headerlink" title="$inc"></a><code>$inc</code></h5><p>按指定的数量增加字段的值。</p>
+<h5 id="min"><a href="#min" class="headerlink" title="$min"></a><code>$min</code></h5><p>仅当指定的值小于现有字段值时才更新字段。</p>
+<h5 id="max"><a href="#max" class="headerlink" title="$max"></a><code>$max</code></h5><p>仅当指定的值大于现有字段值时才更新字段。</p>
+<h5 id="mul"><a href="#mul" class="headerlink" title="$mul"></a><code>$mul</code></h5><p>将字段的值乘以指定的量。</p>
+<h5 id="rename"><a href="#rename" class="headerlink" title="$rename"></a><code>$rename</code></h5><p>重命名字段。</p>
+<h5 id="set"><a href="#set" class="headerlink" title="$set"></a><code>$set</code></h5><p>设置文档中字段的值。</p>
+<h5 id="setOnInsert"><a href="#setOnInsert" class="headerlink" title="$setOnInsert"></a><code>$setOnInsert</code></h5><p>如果更新导致文档插入，则设置字段的值。对修改现有文档的更新操作没有影响。</p>
+<h5 id="unset"><a href="#unset" class="headerlink" title="$unset"></a><code>$unset</code></h5><p>从文档中删除指定的字段。</p>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><h5 id="-1"><a href="#-1" class="headerlink" title="$"></a><code>$</code></h5><p>充当占位符以更新与查询条件匹配的第一个元素。</p>
+<h5 id="-2"><a href="#-2" class="headerlink" title="$[]"></a><code>$[]</code></h5><p>充当占位符以更新数组中与查询条件匹配的文档中的所有元素。</p>
+<h5 id="lt-identifier-gt"><a href="#lt-identifier-gt" class="headerlink" title="$[&lt;identifier&gt;]"></a><code>$[&lt;identifier&gt;]</code></h5><p>充当占位符以更新与arrayFilters匹配查询条件的文档的条件匹配的所有元素。</p>
+<h5 id="addToSet"><a href="#addToSet" class="headerlink" title="$addToSet"></a><code>$addToSet</code></h5><p>仅当数组中尚不存在元素时才将元素添加到数组中。</p>
+<h5 id="pop"><a href="#pop" class="headerlink" title="$pop"></a><code>$pop</code></h5><p>删除数组的第一个或最后一个项目。</p>
+<h5 id="pull"><a href="#pull" class="headerlink" title="$pull"></a><code>$pull</code></h5><p>删除与指定查询匹配的所有数组元素。</p>
+<h5 id="push"><a href="#push" class="headerlink" title="$push"></a><code>$push</code></h5><p>将项添加到数组。</p>
+<h5 id="pullAll"><a href="#pullAll" class="headerlink" title="$pullAll"></a><code>$pullAll</code></h5><p>从数组中删除所有匹配的值。</p>
+<h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><h5 id="each"><a href="#each" class="headerlink" title="$each"></a><code>$each</code></h5><p>修改$push和$addToSet运算符以附加多个项目以进行阵列更新。</p>
+<h5 id="position"><a href="#position" class="headerlink" title="$position"></a><code>$position</code></h5><p>修改$push运算符以指定数组中添加元素的位置。</p>
+<h5 id="slice-1"><a href="#slice-1" class="headerlink" title="$slice"></a><code>$slice</code></h5><p>修改$push运算符以限制更新数组的大小。</p>
+<h5 id="sort"><a href="#sort" class="headerlink" title="$sort"></a><code>$sort</code></h5><p>修改$push运算符以重新排序存储在数组中的文档。</p>
+<h4 id="按位"><a href="#按位" class="headerlink" title="按位"></a>按位</h4><h5 id="bit"><a href="#bit" class="headerlink" title="$bit"></a><code>$bit</code></h5><p>执行按位AND，OR和XOR更新整数值。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MongoDB/" rel="tag"># MongoDB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/26/MongoDB学习笔记-二/" rel="next" title="MongoDB学习笔记   (二)：索引">
+                <i class="fa fa-chevron-left"></i> MongoDB学习笔记   (二)：索引
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/21/冒泡排序-2种/" rel="prev" title="冒泡排序-2种">
+                冒泡排序-2种 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="WeiYuan Jia">
+            
+              <p class="site-author-name" itemprop="name">WeiYuan Jia</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/AAaNEIgeiDEItao/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:aaaneigeideitao@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询、投影"><span class="nav-number">1.</span> <span class="nav-text">查询、投影</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比较操作符"><span class="nav-number">1.1.</span> <span class="nav-text">比较操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#eq"><span class="nav-number">1.1.1.</span> <span class="nav-text">$eq</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gt"><span class="nav-number">1.1.2.</span> <span class="nav-text">$gt</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gte"><span class="nav-number">1.1.3.</span> <span class="nav-text">$gte</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#in"><span class="nav-number">1.1.4.</span> <span class="nav-text">$in</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lt"><span class="nav-number">1.1.5.</span> <span class="nav-text">$lt</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lte"><span class="nav-number">1.1.6.</span> <span class="nav-text">$lte</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ne"><span class="nav-number">1.1.7.</span> <span class="nav-text">$ne</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nin"><span class="nav-number">1.1.8.</span> <span class="nav-text">$nin</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑操作符"><span class="nav-number">1.2.</span> <span class="nav-text">逻辑操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#and"><span class="nav-number">1.2.1.</span> <span class="nav-text">$and</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#not"><span class="nav-number">1.2.2.</span> <span class="nav-text">$not</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nor"><span class="nav-number">1.2.3.</span> <span class="nav-text">$nor</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#or"><span class="nav-number">1.2.4.</span> <span class="nav-text">$or</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#元素操作符"><span class="nav-number">1.3.</span> <span class="nav-text">元素操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#exists"><span class="nav-number">1.3.1.</span> <span class="nav-text">$exists</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#type"><span class="nav-number">1.3.2.</span> <span class="nav-text">$type</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#值操作符"><span class="nav-number">1.4.</span> <span class="nav-text">值操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#expr"><span class="nav-number">1.4.1.</span> <span class="nav-text">$expr</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#jsonSchema"><span class="nav-number">1.4.2.</span> <span class="nav-text">$jsonSchema</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mod"><span class="nav-number">1.4.3.</span> <span class="nav-text">$mod</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#regex"><span class="nav-number">1.4.4.</span> <span class="nav-text">$regex</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#text"><span class="nav-number">1.4.5.</span> <span class="nav-text">$text</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#where"><span class="nav-number">1.4.6.</span> <span class="nav-text">$where</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组操作符"><span class="nav-number">1.5.</span> <span class="nav-text">数组操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#all"><span class="nav-number">1.5.1.</span> <span class="nav-text">$all</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#elemMatch"><span class="nav-number">1.5.2.</span> <span class="nav-text">$elemMatch</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#size"><span class="nav-number">1.5.3.</span> <span class="nav-text">$size</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#评论操作符"><span class="nav-number">1.6.</span> <span class="nav-text">评论操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#comment"><span class="nav-number">1.6.1.</span> <span class="nav-text">$comment</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#投影操作符"><span class="nav-number">1.7.</span> <span class="nav-text">投影操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#"><span class="nav-number">1.7.1.</span> <span class="nav-text">$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#elemMatch-1"><span class="nav-number">1.7.2.</span> <span class="nav-text">$elemMatch</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#meta"><span class="nav-number">1.7.3.</span> <span class="nav-text">$meta</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#slice"><span class="nav-number">1.7.4.</span> <span class="nav-text">$slice</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按位操作符"><span class="nav-number">1.8.</span> <span class="nav-text">按位操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#bitsAllClear"><span class="nav-number">1.8.1.</span> <span class="nav-text">$bitsAllClear</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bitsAllSet"><span class="nav-number">1.8.2.</span> <span class="nav-text">$bitsAllSet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bitsAnyClear"><span class="nav-number">1.8.3.</span> <span class="nav-text">$bitsAnyClear</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bitsAnySet"><span class="nav-number">1.8.4.</span> <span class="nav-text">$bitsAnySet</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#地理空间操作符"><span class="nav-number">1.9.</span> <span class="nav-text">地理空间操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#geoIntersects"><span class="nav-number">1.9.1.</span> <span class="nav-text">$geoIntersects</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#geoWithin"><span class="nav-number">1.9.2.</span> <span class="nav-text">$geoWithin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#near"><span class="nav-number">1.9.3.</span> <span class="nav-text">$near</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nearSphere"><span class="nav-number">1.9.4.</span> <span class="nav-text">$nearSphere</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">2.</span> <span class="nav-text">更新</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字段"><span class="nav-number">2.1.</span> <span class="nav-text">字段</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#currentDate"><span class="nav-number">2.1.1.</span> <span class="nav-text">$currentDate</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#inc"><span class="nav-number">2.1.2.</span> <span class="nav-text">$inc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#min"><span class="nav-number">2.1.3.</span> <span class="nav-text">$min</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#max"><span class="nav-number">2.1.4.</span> <span class="nav-text">$max</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mul"><span class="nav-number">2.1.5.</span> <span class="nav-text">$mul</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rename"><span class="nav-number">2.1.6.</span> <span class="nav-text">$rename</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#set"><span class="nav-number">2.1.7.</span> <span class="nav-text">$set</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#setOnInsert"><span class="nav-number">2.1.8.</span> <span class="nav-text">$setOnInsert</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#unset"><span class="nav-number">2.1.9.</span> <span class="nav-text">$unset</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数组"><span class="nav-number">2.2.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">$</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#-2"><span class="nav-number">2.2.2.</span> <span class="nav-text">$[]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lt-identifier-gt"><span class="nav-number">2.2.3.</span> <span class="nav-text">$[&lt;identifier&gt;]</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#addToSet"><span class="nav-number">2.2.4.</span> <span class="nav-text">$addToSet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pop"><span class="nav-number">2.2.5.</span> <span class="nav-text">$pop</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pull"><span class="nav-number">2.2.6.</span> <span class="nav-text">$pull</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#push"><span class="nav-number">2.2.7.</span> <span class="nav-text">$push</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#pullAll"><span class="nav-number">2.2.8.</span> <span class="nav-text">$pullAll</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修饰符"><span class="nav-number">2.3.</span> <span class="nav-text">修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#each"><span class="nav-number">2.3.1.</span> <span class="nav-text">$each</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#position"><span class="nav-number">2.3.2.</span> <span class="nav-text">$position</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#slice-1"><span class="nav-number">2.3.3.</span> <span class="nav-text">$slice</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#sort"><span class="nav-number">2.3.4.</span> <span class="nav-text">$sort</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按位"><span class="nav-number">2.4.</span> <span class="nav-text">按位</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#bit"><span class="nav-number">2.4.1.</span> <span class="nav-text">$bit</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WeiYuan Jia</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
