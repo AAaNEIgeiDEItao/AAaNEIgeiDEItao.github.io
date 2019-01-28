@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="之前面试的时候有问到排序，因为菜，所以暂时只会写写冒泡，还写错了，后来面试官问能不能不借助第三方变量实现，当时脑子里也想过用加减互换的方法，不过没有说出来，面试官就一句话带过了，回来之后整理了一下冒泡排序的两种方法 借助第三方变量12345678910111213const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];let temp = 0;fo">
+<meta name="description" content="之前面试的时候有问到排序，因为菜，所以暂时只会写写冒泡，还写错了，后来面试官问能不能不借助第三方变量实现，当时脑子里也想过用加减互换的方法，不过没有说出来，面试官就一句话带过了，回来之后整理了一下冒泡排序的两种方法 借助第三方变量123456789101112const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];let temp = 0;for(">
 <meta name="keywords" content="冒泡排序,排序">
 <meta property="og:type" content="article">
 <meta property="og:title" content="冒泡排序-2种">
 <meta property="og:url" content="https://aaaneigeideitao.github.io/2019/01/21/冒泡排序-2种/index.html">
 <meta property="og:site_name" content="这是我的博客">
-<meta property="og:description" content="之前面试的时候有问到排序，因为菜，所以暂时只会写写冒泡，还写错了，后来面试官问能不能不借助第三方变量实现，当时脑子里也想过用加减互换的方法，不过没有说出来，面试官就一句话带过了，回来之后整理了一下冒泡排序的两种方法 借助第三方变量12345678910111213const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];let temp = 0;fo">
+<meta property="og:description" content="之前面试的时候有问到排序，因为菜，所以暂时只会写写冒泡，还写错了，后来面试官问能不能不借助第三方变量实现，当时脑子里也想过用加减互换的方法，不过没有说出来，面试官就一句话带过了，回来之后整理了一下冒泡排序的两种方法 借助第三方变量123456789101112const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];let temp = 0;for(">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-21T06:03:50.396Z">
+<meta property="og:updated_time" content="2019-01-21T06:06:34.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="冒泡排序-2种">
-<meta name="twitter:description" content="之前面试的时候有问到排序，因为菜，所以暂时只会写写冒泡，还写错了，后来面试官问能不能不借助第三方变量实现，当时脑子里也想过用加减互换的方法，不过没有说出来，面试官就一句话带过了，回来之后整理了一下冒泡排序的两种方法 借助第三方变量12345678910111213const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];let temp = 0;fo">
+<meta name="twitter:description" content="之前面试的时候有问到排序，因为菜，所以暂时只会写写冒泡，还写错了，后来面试官问能不能不借助第三方变量实现，当时脑子里也想过用加减互换的方法，不过没有说出来，面试官就一句话带过了，回来之后整理了一下冒泡排序的两种方法 借助第三方变量123456789101112const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];let temp = 0;for(">
 
 
 
@@ -341,8 +341,8 @@
 
       
         <p>之前面试的时候有问到排序，因为菜，所以暂时只会写写冒泡，还写错了，后来面试官问能不能不借助第三方变量实现，当时脑子里也想过用加减互换的方法，不过没有说出来，面试官就一句话带过了，回来之后整理了一下冒泡排序的两种方法</p>
-<h3 id="借助第三方变量"><a href="#借助第三方变量" class="headerlink" title="借助第三方变量"></a>借助第三方变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];</span><br><span class="line"><span class="built_in">let</span> temp = 0;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt; arr.length; i++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">let</span> j = i; j &lt; arr.length; j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr[i] &gt; arr[j])&#123;</span><br><span class="line">            temp = arr[i];</span><br><span class="line">			arr[i] = arr[j];</span><br><span class="line">            arr[j] = temp;</span><br><span class="line">		&#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="不借助第三方变量"><a href="#不借助第三方变量" class="headerlink" title="不借助第三方变量"></a>不借助第三方变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt; arr.length; i++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">let</span> j = i; j &lt; arr.length; j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr[i] &gt; arr[j])&#123;</span><br><span class="line">           arr[i] = arr[j] + arr[i];</span><br><span class="line">		   arr[j] = arr[i] - arr[j];</span><br><span class="line">           arr[i] = arr[i] - arr[j];</span><br><span class="line">		&#125; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="借助第三方变量"><a href="#借助第三方变量" class="headerlink" title="借助第三方变量"></a>借助第三方变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];</span><br><span class="line"><span class="built_in">let</span> temp = 0;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt; arr.length; i++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">let</span> j = i; j &lt; arr.length; j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr[i] &gt; arr[j])&#123;</span><br><span class="line">           		temp = arr[i];</span><br><span class="line">			arr[i] = arr[j];</span><br><span class="line">            		arr[j] = temp;</span><br><span class="line">		&#125; </span><br><span class="line">   	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="不借助第三方变量"><a href="#不借助第三方变量" class="headerlink" title="不借助第三方变量"></a>不借助第三方变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const arr = [45,4,6,7,8,12,3,45,5,6,7,78,234,12,3,1];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="built_in">let</span> i = 0; i &lt; arr.length; i++)&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">let</span> j = i; j &lt; arr.length; j++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(arr[i] &gt; arr[j])&#123;</span><br><span class="line">          	   arr[i] = arr[j] + arr[i];</span><br><span class="line">		   arr[j] = arr[i] - arr[j];</span><br><span class="line">           	   arr[i] = arr[i] - arr[j];</span><br><span class="line">		&#125; </span><br><span class="line">   	 &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -383,6 +383,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/28/Linux下添加环境变量/" rel="prev" title="Linux下添加环境变量">
+                Linux下添加环境变量 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -461,7 +465,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -483,7 +487,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

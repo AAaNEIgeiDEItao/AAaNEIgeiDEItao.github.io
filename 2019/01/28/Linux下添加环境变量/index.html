@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="HTTP,Promise,Ajax,get,post,">
+  <meta name="keywords" content="环境变量,">
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344let btn = document.getElementById(&quot;btn&quot;);			let demo = document.getElementById(&quot;#demo&quot;);			const ajax_post_promise = (url">
-<meta name="keywords" content="HTTP,Promise,Ajax,get,post">
+<meta name="description" content="添加环境变量有两种方式，一种是对所有用户都生效，另一种是对该用户有效 所有用户添加node目录下bin文件所有命令到环境变量12345vi /etc/profile // 添加一行export PATH=$PATH:~/www/node-v10.15.0-linux-x64/bin/// 立即生效source /etc/profile 当前用户12vi ~/.bash_profile/**操作和上">
+<meta name="keywords" content="环境变量">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ajax封装成Promise">
-<meta property="og:url" content="https://aaaneigeideitao.github.io/2018/10/28/Ajax封装成Promise/index.html">
+<meta property="og:title" content="Linux下添加环境变量">
+<meta property="og:url" content="https://aaaneigeideitao.github.io/2019/01/28/Linux下添加环境变量/index.html">
 <meta property="og:site_name" content="这是我的博客">
-<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344let btn = document.getElementById(&quot;btn&quot;);			let demo = document.getElementById(&quot;#demo&quot;);			const ajax_post_promise = (url">
+<meta property="og:description" content="添加环境变量有两种方式，一种是对所有用户都生效，另一种是对该用户有效 所有用户添加node目录下bin文件所有命令到环境变量12345vi /etc/profile // 添加一行export PATH=$PATH:~/www/node-v10.15.0-linux-x64/bin/// 立即生效source /etc/profile 当前用户12vi ~/.bash_profile/**操作和上">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-24T06:15:03.290Z">
+<meta property="og:updated_time" content="2019-01-27T16:33:47.107Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ajax封装成Promise">
-<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435363738394041424344let btn = document.getElementById(&quot;btn&quot;);			let demo = document.getElementById(&quot;#demo&quot;);			const ajax_post_promise = (url">
+<meta name="twitter:title" content="Linux下添加环境变量">
+<meta name="twitter:description" content="添加环境变量有两种方式，一种是对所有用户都生效，另一种是对该用户有效 所有用户添加node目录下bin文件所有命令到环境变量12345vi /etc/profile // 添加一行export PATH=$PATH:~/www/node-v10.15.0-linux-x64/bin/// 立即生效source /etc/profile 当前用户12vi ~/.bash_profile/**操作和上">
 
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="https://aaaneigeideitao.github.io/2018/10/28/Ajax封装成Promise/">
+  <link rel="canonical" href="https://aaaneigeideitao.github.io/2019/01/28/Linux下添加环境变量/">
 
 
 
 
 
-  <title>Ajax封装成Promise | 这是我的博客</title>
+  <title>Linux下添加环境变量 | 这是我的博客</title>
   
 
 
@@ -251,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2018/10/28/Ajax封装成Promise/">
+    <link itemprop="mainEntityOfPage" href="https://aaaneigeideitao.github.io/2019/01/28/Linux下添加环境变量/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="WeiYuan Jia">
@@ -268,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ajax封装成Promise</h1>
+          <h1 class="post-title" itemprop="name headline">Linux下添加环境变量</h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-28T20:50:00+08:00">
-                2018-10-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-28T00:25:00+08:00">
+                2019-01-28
               </time>
             
 
@@ -303,8 +303,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Ajax/" itemprop="url" rel="index">
-                    <span itemprop="name">Ajax</span>
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
                   </a>
                 </span>
 
@@ -340,7 +340,9 @@
       
 
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">let</span> btn = document.getElementById(<span class="string">"btn"</span>);</span><br><span class="line">			<span class="built_in">let</span> demo = document.getElementById(<span class="string">"#demo"</span>);</span><br><span class="line"></span><br><span class="line">			const ajax_post_promise = (url, parameter = &#123;&#125;) =&gt; &#123;</span><br><span class="line">				<span class="built_in">return</span> new Promise(<span class="keyword">function</span>(resolve, reject) &#123;</span><br><span class="line">					<span class="built_in">let</span> xhr = new XMLHttpRequest();</span><br><span class="line">					xhr.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">						<span class="keyword">if</span> (xhr.readyState == 4) &#123;</span><br><span class="line">							<span class="keyword">if</span> ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304) &#123;</span><br><span class="line">								resolve(JSON.parse(xhr.responseText));</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					xhr.open(<span class="string">'post'</span>, url, <span class="literal">true</span>);</span><br><span class="line">					xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>)</span><br><span class="line">					xhr.send(parameter.body);</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line">			const ajax_get_promise = (url, parameter = &#123;&#125;) =&gt; &#123;</span><br><span class="line">				<span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">					<span class="built_in">let</span> xhr = new XMLHttpRequest();</span><br><span class="line">					<span class="built_in">let</span> param = Object.entries(parameter).map((arrItem, index) =&gt; `?<span class="variable">$&#123;arrItem[0]&#125;</span>=<span class="variable">$&#123;arrItem[1]&#125;</span>`);</span><br><span class="line">					</span><br><span class="line">					xhr.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">						<span class="keyword">if</span> (xhr.readyState == 4) &#123;</span><br><span class="line">							<span class="keyword">if</span> ((xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) || xhr.status == 304) &#123;</span><br><span class="line">								resolve(JSON.parse(xhr.responseText));</span><br><span class="line">							&#125;</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">					xhr.open(<span class="string">'get'</span>, url + param, <span class="literal">true</span>);</span><br><span class="line">					xhr.send(null);</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			ajax_post_promise(<span class="string">'http://localhost:3020/users/'</span>)</span><br><span class="line">				.<span class="keyword">then</span>((res) =&gt; console.log(res))</span><br><span class="line">				.catch((err) =&gt; console.log(err));</span><br><span class="line"></span><br><span class="line">			ajax_get_promise((<span class="string">'http://localhost:3020/users/'</span>))</span><br><span class="line">				.<span class="keyword">then</span>((res) =&gt; console.log(res))</span><br><span class="line">				.catch((err) =&gt; console.log(err));</span><br></pre></td></tr></table></figure>
+        <p>添加环境变量有两种方式，一种是对所有用户都生效，另一种是对该用户有效</p>
+<h5 id="所有用户"><a href="#所有用户" class="headerlink" title="所有用户"></a>所有用户</h5><p>添加node目录下bin文件所有命令到环境变量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile </span><br><span class="line">// 添加一行</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:~/www/node-v10.15.0-linux-x64/bin/</span><br><span class="line">// 立即生效</span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure></p>
+<h5 id="当前用户"><a href="#当前用户" class="headerlink" title="当前用户"></a>当前用户</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br><span class="line">/**操作和上面一样**/</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -357,15 +359,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
-          
-            <a href="/tags/Promise/" rel="tag"># Promise</a>
-          
-            <a href="/tags/Ajax/" rel="tag"># Ajax</a>
-          
-            <a href="/tags/get/" rel="tag"># get</a>
-          
-            <a href="/tags/post/" rel="tag"># post</a>
+            <a href="/tags/环境变量/" rel="tag"># 环境变量</a>
           
         </div>
       
@@ -378,8 +372,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/29/JavaScript-箭头函数this作用域/" rel="next" title="JavaScript-this指向正常的几种写法">
-                <i class="fa fa-chevron-left"></i> JavaScript-this指向正常的几种写法
+              <a href="/2019/01/21/冒泡排序-2种/" rel="next" title="冒泡排序-2种">
+                <i class="fa fa-chevron-left"></i> 冒泡排序-2种
               </a>
             
           </div>
@@ -387,10 +381,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/30/localStorage和sessionStorage/" rel="prev" title="localStorage和sessionStorage">
-                localStorage和sessionStorage <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -442,8 +432,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -521,6 +520,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#所有用户"><span class="nav-number">1.</span> <span class="nav-text">所有用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#当前用户"><span class="nav-number">2.</span> <span class="nav-text">当前用户</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
